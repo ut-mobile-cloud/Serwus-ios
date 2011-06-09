@@ -1,0 +1,440 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		25A7F76013A0E8CF00F4BD57 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25A7F75F13A0E8CF00F4BD57 /* UIKit.framework */; };
+		25A7F76213A0E8CF00F4BD57 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25A7F76113A0E8CF00F4BD57 /* Foundation.framework */; };
+		25A7F76413A0E8CF00F4BD57 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25A7F76313A0E8CF00F4BD57 /* CoreGraphics.framework */; };
+		25A7F76A13A0E8CF00F4BD57 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 25A7F76813A0E8CF00F4BD57 /* InfoPlist.strings */; };
+		25A7F76D13A0E8CF00F4BD57 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A7F76C13A0E8CF00F4BD57 /* main.m */; };
+		25A7F77013A0E8CF00F4BD57 /* SerwusAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A7F76F13A0E8CF00F4BD57 /* SerwusAppDelegate.m */; };
+		25A7F77313A0E8CF00F4BD57 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25A7F77113A0E8CF00F4BD57 /* MainWindow.xib */; };
+		25A7F77A13A0E8D000F4BD57 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25A7F75F13A0E8CF00F4BD57 /* UIKit.framework */; };
+		25A7F77B13A0E8D000F4BD57 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25A7F76113A0E8CF00F4BD57 /* Foundation.framework */; };
+		25A7F77C13A0E8D000F4BD57 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25A7F76313A0E8CF00F4BD57 /* CoreGraphics.framework */; };
+		25A7F78413A0E8D000F4BD57 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 25A7F78213A0E8D000F4BD57 /* InfoPlist.strings */; };
+		25A7F78713A0E8D000F4BD57 /* SerwusTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 25A7F78613A0E8D000F4BD57 /* SerwusTests.h */; };
+		25A7F78913A0E8D000F4BD57 /* SerwusTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A7F78813A0E8D000F4BD57 /* SerwusTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		25A7F77D13A0E8D000F4BD57 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25A7F75213A0E8CF00F4BD57 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 25A7F75A13A0E8CF00F4BD57;
+			remoteInfo = Serwus;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		25A7F75B13A0E8CF00F4BD57 /* Serwus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Serwus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		25A7F75F13A0E8CF00F4BD57 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		25A7F76113A0E8CF00F4BD57 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		25A7F76313A0E8CF00F4BD57 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		25A7F76713A0E8CF00F4BD57 /* Serwus-Info.plist */ = {isa = PBXFileReference; path = "Serwus-Info.plist"; sourceTree = "<group>"; };
+		25A7F76913A0E8CF00F4BD57 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		25A7F76B13A0E8CF00F4BD57 /* Serwus-Prefix.pch */ = {isa = PBXFileReference; path = "Serwus-Prefix.pch"; sourceTree = "<group>"; };
+		25A7F76C13A0E8CF00F4BD57 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		25A7F76E13A0E8CF00F4BD57 /* SerwusAppDelegate.h */ = {isa = PBXFileReference; path = SerwusAppDelegate.h; sourceTree = "<group>"; };
+		25A7F76F13A0E8CF00F4BD57 /* SerwusAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SerwusAppDelegate.m; sourceTree = "<group>"; };
+		25A7F77213A0E8CF00F4BD57 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		25A7F77913A0E8D000F4BD57 /* SerwusTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SerwusTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		25A7F78113A0E8D000F4BD57 /* SerwusTests-Info.plist */ = {isa = PBXFileReference; path = "SerwusTests-Info.plist"; sourceTree = "<group>"; };
+		25A7F78313A0E8D000F4BD57 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		25A7F78513A0E8D000F4BD57 /* SerwusTests-Prefix.pch */ = {isa = PBXFileReference; path = "SerwusTests-Prefix.pch"; sourceTree = "<group>"; };
+		25A7F78613A0E8D000F4BD57 /* SerwusTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SerwusTests.h; sourceTree = "<group>"; };
+		25A7F78813A0E8D000F4BD57 /* SerwusTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SerwusTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		25A7F75813A0E8CF00F4BD57 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25A7F76013A0E8CF00F4BD57 /* UIKit.framework in Frameworks */,
+				25A7F76213A0E8CF00F4BD57 /* Foundation.framework in Frameworks */,
+				25A7F76413A0E8CF00F4BD57 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25A7F77513A0E8D000F4BD57 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25A7F77A13A0E8D000F4BD57 /* UIKit.framework in Frameworks */,
+				25A7F77B13A0E8D000F4BD57 /* Foundation.framework in Frameworks */,
+				25A7F77C13A0E8D000F4BD57 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		25A7F75013A0E8CF00F4BD57 = {
+			isa = PBXGroup;
+			children = (
+				25A7F76513A0E8CF00F4BD57 /* Serwus */,
+				25A7F77F13A0E8D000F4BD57 /* SerwusTests */,
+				25A7F75E13A0E8CF00F4BD57 /* Frameworks */,
+				25A7F75C13A0E8CF00F4BD57 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		25A7F75C13A0E8CF00F4BD57 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				25A7F75B13A0E8CF00F4BD57 /* Serwus.app */,
+				25A7F77913A0E8D000F4BD57 /* SerwusTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		25A7F75E13A0E8CF00F4BD57 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				25A7F75F13A0E8CF00F4BD57 /* UIKit.framework */,
+				25A7F76113A0E8CF00F4BD57 /* Foundation.framework */,
+				25A7F76313A0E8CF00F4BD57 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		25A7F76513A0E8CF00F4BD57 /* Serwus */ = {
+			isa = PBXGroup;
+			children = (
+				25A7F76E13A0E8CF00F4BD57 /* SerwusAppDelegate.h */,
+				25A7F76F13A0E8CF00F4BD57 /* SerwusAppDelegate.m */,
+				25A7F77113A0E8CF00F4BD57 /* MainWindow.xib */,
+				25A7F76613A0E8CF00F4BD57 /* Supporting Files */,
+			);
+			path = Serwus;
+			sourceTree = "<group>";
+		};
+		25A7F76613A0E8CF00F4BD57 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				25A7F76713A0E8CF00F4BD57 /* Serwus-Info.plist */,
+				25A7F76813A0E8CF00F4BD57 /* InfoPlist.strings */,
+				25A7F76B13A0E8CF00F4BD57 /* Serwus-Prefix.pch */,
+				25A7F76C13A0E8CF00F4BD57 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		25A7F77F13A0E8D000F4BD57 /* SerwusTests */ = {
+			isa = PBXGroup;
+			children = (
+				25A7F78613A0E8D000F4BD57 /* SerwusTests.h */,
+				25A7F78813A0E8D000F4BD57 /* SerwusTests.m */,
+				25A7F78013A0E8D000F4BD57 /* Supporting Files */,
+			);
+			path = SerwusTests;
+			sourceTree = "<group>";
+		};
+		25A7F78013A0E8D000F4BD57 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				25A7F78113A0E8D000F4BD57 /* SerwusTests-Info.plist */,
+				25A7F78213A0E8D000F4BD57 /* InfoPlist.strings */,
+				25A7F78513A0E8D000F4BD57 /* SerwusTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		25A7F75A13A0E8CF00F4BD57 /* Serwus */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 25A7F78C13A0E8D000F4BD57 /* Build configuration list for PBXNativeTarget "Serwus" */;
+			buildPhases = (
+				25A7F75713A0E8CF00F4BD57 /* Sources */,
+				25A7F75813A0E8CF00F4BD57 /* Frameworks */,
+				25A7F75913A0E8CF00F4BD57 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Serwus;
+			productName = Serwus;
+			productReference = 25A7F75B13A0E8CF00F4BD57 /* Serwus.app */;
+			productType = "com.apple.product-type.application";
+		};
+		25A7F77813A0E8D000F4BD57 /* SerwusTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 25A7F78F13A0E8D000F4BD57 /* Build configuration list for PBXNativeTarget "SerwusTests" */;
+			buildPhases = (
+				25A7F77413A0E8D000F4BD57 /* Sources */,
+				25A7F77513A0E8D000F4BD57 /* Frameworks */,
+				25A7F77613A0E8D000F4BD57 /* Resources */,
+				25A7F77713A0E8D000F4BD57 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				25A7F77E13A0E8D000F4BD57 /* PBXTargetDependency */,
+			);
+			name = SerwusTests;
+			productName = SerwusTests;
+			productReference = 25A7F77913A0E8D000F4BD57 /* SerwusTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		25A7F75213A0E8CF00F4BD57 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 25A7F75513A0E8CF00F4BD57 /* Build configuration list for PBXProject "Serwus" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 25A7F75013A0E8CF00F4BD57;
+			productRefGroup = 25A7F75C13A0E8CF00F4BD57 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				25A7F75A13A0E8CF00F4BD57 /* Serwus */,
+				25A7F77813A0E8D000F4BD57 /* SerwusTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		25A7F75913A0E8CF00F4BD57 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25A7F76A13A0E8CF00F4BD57 /* InfoPlist.strings in Resources */,
+				25A7F77313A0E8CF00F4BD57 /* MainWindow.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25A7F77613A0E8D000F4BD57 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25A7F78413A0E8D000F4BD57 /* InfoPlist.strings in Resources */,
+				25A7F78713A0E8D000F4BD57 /* SerwusTests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		25A7F77713A0E8D000F4BD57 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		25A7F75713A0E8CF00F4BD57 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25A7F76D13A0E8CF00F4BD57 /* main.m in Sources */,
+				25A7F77013A0E8CF00F4BD57 /* SerwusAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25A7F77413A0E8D000F4BD57 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25A7F78913A0E8D000F4BD57 /* SerwusTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		25A7F77E13A0E8D000F4BD57 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 25A7F75A13A0E8CF00F4BD57 /* Serwus */;
+			targetProxy = 25A7F77D13A0E8D000F4BD57 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		25A7F76813A0E8CF00F4BD57 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				25A7F76913A0E8CF00F4BD57 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		25A7F77113A0E8CF00F4BD57 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				25A7F77213A0E8CF00F4BD57 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		25A7F78213A0E8D000F4BD57 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				25A7F78313A0E8D000F4BD57 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		25A7F78A13A0E8D000F4BD57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		25A7F78B13A0E8D000F4BD57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		25A7F78D13A0E8D000F4BD57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Serwus/Serwus-Prefix.pch";
+				INFOPLIST_FILE = "Serwus/Serwus-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		25A7F78E13A0E8D000F4BD57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Serwus/Serwus-Prefix.pch";
+				INFOPLIST_FILE = "Serwus/Serwus-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		25A7F79013A0E8D000F4BD57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Serwus.app/Serwus";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SerwusTests/SerwusTests-Prefix.pch";
+				INFOPLIST_FILE = "SerwusTests/SerwusTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		25A7F79113A0E8D000F4BD57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Serwus.app/Serwus";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SerwusTests/SerwusTests-Prefix.pch";
+				INFOPLIST_FILE = "SerwusTests/SerwusTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		25A7F75513A0E8CF00F4BD57 /* Build configuration list for PBXProject "Serwus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25A7F78A13A0E8D000F4BD57 /* Debug */,
+				25A7F78B13A0E8D000F4BD57 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		25A7F78C13A0E8D000F4BD57 /* Build configuration list for PBXNativeTarget "Serwus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25A7F78D13A0E8D000F4BD57 /* Debug */,
+				25A7F78E13A0E8D000F4BD57 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		25A7F78F13A0E8D000F4BD57 /* Build configuration list for PBXNativeTarget "SerwusTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25A7F79013A0E8D000F4BD57 /* Debug */,
+				25A7F79113A0E8D000F4BD57 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 25A7F75213A0E8CF00F4BD57 /* Project object */;
+}
