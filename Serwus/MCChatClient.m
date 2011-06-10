@@ -47,6 +47,23 @@
 }
 #pragma mark NSNetServiceBrowserDelegate
 
+-(void)netServiceBrowser:(NSNetServiceBrowser *)aBrowser didFindService:(NSNetService *)aService moreComing:(BOOL)more {
+    [self.services addObject:aService];
+}
+
+-(void)netServiceBrowser:(NSNetServiceBrowser *)aBrowser didRemoveService:(NSNetService *)aService moreComing:(BOOL)more {
+    [self.services removeObject:aService];
+    if ( aService == self.connectedService ) self.isConnected = NO;
+}
+
+-(void)netServiceDidResolveAddress:(NSNetService *)service {
+    self.isConnected = YES;
+    self.connectedService = service;
+}
+
+-(void)netService:(NSNetService *)service didNotResolve:(NSDictionary *)errorDict {
+    NSLog(@"Could not resolve: %@", errorDict);
+}
 
 #pragma mark NSNetServiceDelegate
 

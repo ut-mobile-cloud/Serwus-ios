@@ -7,13 +7,18 @@
 //
 
 #import "MCServiceListController.h"
+#import "MCServiceDetailsController.h"
 
-
+#define MCServiceListTableViewTag 1111
 @interface MCServiceListController (BonjourDiscovery)
 @end
 
 @implementation MCServiceListController
 
+- (void)refreshPressed:(id)sender
+{
+	DLog(@"Refresh pressed");
+}
 #pragma mark UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -44,7 +49,12 @@
 // - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 // - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section;
 // - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section;
-// - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	MCServiceDetailsController *serviceDetailsController = [[MCServiceDetailsController alloc] initWithNibName:@"MCServiceDetailsController" bundle:[NSBundle mainBundle]];
+	[self.navigationController pushViewController:serviceDetailsController animated:YES];
+	[serviceDetailsController release];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -59,10 +69,8 @@
 {
 	DLog(@"I was woken");
 }
-- (void)dealloc
-{
-    [super dealloc];
-}
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -72,12 +80,14 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-#pragma mark - View lifecycle
+#pragma mark UIViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+	UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"reload"] style:UIBarButtonSystemItemRefresh target:self action:@selector(refreshPressed:)];
+	[self navigationItem].rightBarButtonItem = refreshButton;
+	[refreshButton release];
 }
 
 - (void)viewDidUnload
@@ -87,10 +97,23 @@
     // e.g. self.myOutlet = nil;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	UITableView *serviceListTable = (UITableView *)[self.view viewWithTag:MCServiceListTableViewTag];
+	[serviceListTable deselectRowAtIndexPath:[serviceListTable indexPathForSelectedRow] animated:YES];
+}
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark NSObject
+
+- (void)dealloc
+{
+    [super dealloc];
 }
 
 @end

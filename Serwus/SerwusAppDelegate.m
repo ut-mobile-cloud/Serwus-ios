@@ -8,17 +8,19 @@
 
 #import "SerwusAppDelegate.h"
 #import "MCServiceListController.h"
+#import "MCChatServer.h"
 
 @implementation SerwusAppDelegate
 
 
 @synthesize window=_window;
+@synthesize tabBarController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 	serviceListController = [[MCServiceListController alloc] initWithNibName:@"MCServiceListController" bundle:[NSBundle mainBundle]];
-	[self.window addSubview:serviceListController.view];
-	
+	[self.window addSubview:tabBarController.view];
+	[[MCChatServer sharedServer] startService];
 	[self.window makeKeyAndVisible];
     return YES;
 }
@@ -66,6 +68,7 @@
 {
 	[serviceListController release];
 	[_window release];
+	[tabBarController release];
     [super dealloc];
 }
 

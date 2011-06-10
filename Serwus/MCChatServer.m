@@ -8,6 +8,8 @@
 
 #import "MCChatServer.h"
 
+const int MCChatServicePort = 54321;
+NSString * const MCChatServiceType = @"_mcchat._tcp."; // Must be less than 14 characters. Leading underscores and periods are important!
 @implementation MCChatServer
 
 + (MCChatServer *)sharedServer

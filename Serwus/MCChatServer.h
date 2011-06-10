@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-const int MCChatServicePort = 54321;
-NSString * const MCChatServiceType = @"_mcchat._tcp."; // Must be less than 14 characters. Leading underscores and periods are important!
+extern const int MCChatServicePort;
+extern NSString * const MCChatServiceType;
 
 @interface MCChatServer : NSObject<NSNetServiceDelegate> {
     NSNetService *netService;
