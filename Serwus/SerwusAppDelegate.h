@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class MCServiceListController;
 @interface SerwusAppDelegate : NSObject <UIApplicationDelegate> {
+	MCServiceListController *serviceListController;
 
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import "SerwusAppDelegate.h"
+#import "MCServiceListController.h"
 
 @implementation SerwusAppDelegate
 
@@ -15,7 +16,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-	// Override point for customization after application launch.
+	serviceListController = [[MCServiceListController alloc] initWithNibName:@"MCServiceListController" bundle:[NSBundle mainBundle]];
+	[self.window addSubview:serviceListController.view];
+	
 	[self.window makeKeyAndVisible];
     return YES;
 }
@@ -61,6 +64,7 @@
 
 - (void)dealloc
 {
+	[serviceListController release];
 	[_window release];
     [super dealloc];
 }
