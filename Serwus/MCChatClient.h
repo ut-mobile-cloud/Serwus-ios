@@ -11,21 +11,18 @@
 @class AsyncSocket;
 @class MCMessageBroker;
 
-@interface MCChatClient : NSObject<NSNetServiceBrowserDelegate, NSNetServiceDelegate> {
+@interface MCChatClient : NSObject<NSNetServiceDelegate> {
     BOOL isConnected;
-    NSNetServiceBrowser *browser;
-    NSNetService *connectedService;
-    NSMutableArray *services;
+    NSNetService *remoteService;
     AsyncSocket *socket;
     MCMessageBroker *messageBroker;	
 }
 
-@property (readonly, retain) NSMutableArray *services;
 @property (readonly, assign) BOOL isConnected;
 @property (readwrite, retain) AsyncSocket *socket;
+@property (readwrite, retain) NSNetService *remoteService;
 
--(IBAction)search:(id)sender;
--(IBAction)connect:(id)sender;
--(IBAction)send:(NSString *)text;
+-(void)connect;
+-(void)send:(NSString *)text;
 
 @end

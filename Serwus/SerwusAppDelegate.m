@@ -9,9 +9,9 @@
 #import "SerwusAppDelegate.h"
 #import "MCServiceListController.h"
 #import "MCChatServer.h"
+#import "MCChatClientsManager.h"
 
 @implementation SerwusAppDelegate
-
 
 @synthesize window=_window;
 @synthesize tabBarController;
@@ -20,6 +20,7 @@
 {
 	[self.window addSubview:tabBarController.view];
 	[[MCChatServer sharedServer] startService];
+	[[MCChatClientsManager sharedManager] search];
 	[self.window makeKeyAndVisible];
     return YES;
 }

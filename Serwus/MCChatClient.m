@@ -15,46 +15,21 @@
 
 @interface MCChatClient () // We want these properties to be writable for the class itself
 
-@property (readwrite, retain) NSNetServiceBrowser *browser;
-@property (readwrite, retain) NSMutableArray *services;
 @property (readwrite, assign) BOOL isConnected;
-@property (readwrite, retain) NSNetService *connectedService;
 @property (readwrite, retain) MCMessageBroker *messageBroker;
 
 @end
 
 @implementation MCChatClient
 
-@synthesize browser;
-@synthesize services;
 @synthesize isConnected;
-@synthesize connectedService;
+@synthesize remoteService;
 @synthesize socket;
 @synthesize messageBroker;
 
--(void)awakeFromNib {
-    services = [NSMutableArray new];
-    self.browser = [[NSNetServiceBrowser new] autorelease];
-    self.browser.delegate = self;
-    self.isConnected = NO;
-}
 
--(void)dealloc {
-    self.connectedService = nil;
-    self.browser = nil;
-    self.socket = nil;
-    self.messageBroker.delegate = nil;
-    self.messageBroker = nil;
-    [services release];
-    [super dealloc];
-}
 
--(IBAction)search:(id)sender {
-    [self.browser searchForServicesOfType:MCChatServiceType inDomain:@""];
-}
-
--(IBAction)connect:(id)sender {
-    NSNetService *remoteService = self.services.lastObject;
+-(void)connect {
     remoteService.delegate = self;
     [remoteService resolveWithTimeout:30];
 }
@@ -88,27 +63,24 @@
     self.isConnected = YES;
 }
 
-#pragma mark Net Service Browser Delegate Methods
--(void)netServiceBrowser:(NSNetServiceBrowser *)aBrowser didFindService:(NSNetService *)aService moreComing:(BOOL)more {
-    [self.services addObject:aService];
-}
 
--(void)netServiceBrowser:(NSNetServiceBrowser *)aBrowser didRemoveService:(NSNetService *)aService moreComing:(BOOL)more {
-    [self.services removeObject:aService];
-    if ( aService == self.connectedService ) {
+#pragma mark NSObject
+
+- (id)init
+{
+	self = [super init];
+	if (self != nil) {
 		self.isConnected = NO;
 	}
+	return self;
 }
 
--(void)netServiceDidResolveAddress:(NSNetService *)service {
-    NSError *error;
-    self.connectedService = service;
-    self.socket = [[[AsyncSocket alloc] initWithDelegate:self] autorelease];
-    [self.socket connectToAddress:service.addresses.lastObject error:&error];
-}
-
--(void)netService:(NSNetService *)service didNotResolve:(NSDictionary *)errorDict {
-    NSLog(@"Could not resolve: %@", errorDict);
+-(void)dealloc {
+	[self.remoteService release];
+    [self.socket release];
+    self.messageBroker.delegate = nil;
+    [self.messageBroker release];
+    [super dealloc];
 }
 
 @end

@@ -8,6 +8,9 @@
 
 #import "MCServiceListController.h"
 #import "MCServiceDetailsController.h"
+#import "MCChatServer.h"
+#import "MCChatClient.h"
+#import "MCChatClientsManager.h"
 
 #define MCServiceListTableViewTag 1111
 @interface MCServiceListController (BonjourDiscovery)
@@ -17,12 +20,27 @@
 
 - (void)refreshPressed:(id)sender
 {
-	DLog(@"Refresh pressed");
+	DLog(@"Requesting search of clients");
+	MCChatClientsManager *manager = [MCChatClientsManager sharedManager];
+	[manager search];
+}
+
+- (void)servicesUpdated:(id)sender
+{
+	DLog(@"Services updated notification received. Updating table view");
+	[self.servicesTable reloadData];
+}
+
+@dynamic servicesTable;
+- (UITableView *)servicesTable
+{
+	return (UITableView *)[self.view viewWithTag:MCServiceListTableViewTag];
 }
 #pragma mark UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	NSInteger rows = 100;
+	NSInteger rows = [MCChatClientsManager sharedManager].chatClients.count;
+	DLog(@"TableView will have %d rows", rows);
 	return rows;
 }
 
@@ -39,7 +57,9 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier] autorelease];
     }
-	
+	MCChatClient *chatClient = [[MCChatClientsManager sharedManager].chatClients objectAtIndex:indexPath.row];
+	cell.textLabel.numberOfLines = 0;
+	cell.textLabel.text = [NSString stringWithFormat:@"%@ : %@", [chatClient.remoteService name], [chatClient.remoteService hostName]];
     return cell;
 }
 
@@ -65,22 +85,12 @@
     return self;
 }
 
+#pragma mark UIViewController
+
 - (void)awakeFromNib
 {
 	DLog(@"I was woken");
 }
-
-
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
-
-#pragma mark UIViewController
 
 - (void)viewDidLoad
 {
@@ -103,7 +113,9 @@
 	[super viewWillAppear:animated];
 	UITableView *serviceListTable = (UITableView *)[self.view viewWithTag:MCServiceListTableViewTag];
 	[serviceListTable deselectRowAtIndexPath:[serviceListTable indexPathForSelectedRow] animated:YES];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(servicesUpdated:) name:MCServicesUpdatedNotification object:nil];
 }
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations

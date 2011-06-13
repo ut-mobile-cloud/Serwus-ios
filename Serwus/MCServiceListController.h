@@ -13,4 +13,6 @@
     
 }
 
+@property (nonatomic, readonly) UITableView *servicesTable;
+
 @end

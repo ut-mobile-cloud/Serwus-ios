@@ -12,7 +12,8 @@
 #import "MCMessage.h"
 
 const int MCChatServicePort = 54321;
-NSString * const MCChatServiceType = @"_mcchat._tcp."; // Must be less than 14 characters. Leading underscores and periods are important!
+NSString * const MCChatServiceType = @"_mcchat1._tcp."; // Must be less than 14 characters. Leading underscores and periods are important!
+
 
 @implementation MCChatServer
 
@@ -39,10 +40,11 @@ NSString * const MCChatServiceType = @"_mcchat._tcp."; // Must be less than 14 c
     }
     
     // Advertise service with bonjour
-    NSString *serviceName = [NSString stringWithFormat:@"Cocoa for Scientists on %@", [[NSProcessInfo processInfo] hostName]];
+    NSString *serviceName = [NSString stringWithFormat:@"Chat server on %@", [[NSProcessInfo processInfo] hostName]];
     netService = [[NSNetService alloc] initWithDomain:@"" type:MCChatServiceType name:serviceName port:self.listeningSocket.localPort];
     netService.delegate = self;
     [netService publish];
+	DLog(@"I published my service");
 }
 
 -(void)stopService {
