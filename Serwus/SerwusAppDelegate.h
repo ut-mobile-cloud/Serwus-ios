@@ -10,8 +10,6 @@
 
 @class MCServiceListController;
 @interface SerwusAppDelegate : NSObject <UIApplicationDelegate> {
-	MCServiceListController *serviceListController;
-
 	UITabBarController *tabBarController;
 }
 

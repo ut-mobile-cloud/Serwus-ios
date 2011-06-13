@@ -88,6 +88,7 @@
 	UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"reload"] style:UIBarButtonSystemItemRefresh target:self action:@selector(refreshPressed:)];
 	[self navigationItem].rightBarButtonItem = refreshButton;
 	[refreshButton release];
+	self.navigationController.navigationBar.topItem.title = @"Services";
 }
 
 - (void)viewDidUnload

@@ -7,10 +7,18 @@
 //
 
 #import "MCChatServer.h"
+#import "AsyncSocket.h"
+#import "MCMessageBroker.h"
+#import "MCMessage.h"
 
 const int MCChatServicePort = 54321;
 NSString * const MCChatServiceType = @"_mcchat._tcp."; // Must be less than 14 characters. Leading underscores and periods are important!
+
 @implementation MCChatServer
+
+@synthesize listeningSocket;
+@synthesize connectionSocket;
+@synthesize messageBroker;
 
 + (MCChatServer *)sharedServer
 {
@@ -21,19 +29,71 @@ NSString * const MCChatServiceType = @"_mcchat._tcp."; // Must be less than 14 c
 	return instance;
 }
 
-- (void)startService
-{
-	netService = [[NSNetService alloc] initWithDomain:@"" type:MCChatServiceType name:@"" port:MCChatServicePort];
-	netService.delegate = self;
+-(void)startService {
+    // Start listening socket
+    NSError *error;
+    self.listeningSocket = [[[AsyncSocket alloc]initWithDelegate:self] autorelease];
+    if ( ![self.listeningSocket acceptOnPort:0 error:&error] ) {
+        NSLog(@"Failed to create listening socket");
+        return;
+    }
+    
+    // Advertise service with bonjour
+    NSString *serviceName = [NSString stringWithFormat:@"Cocoa for Scientists on %@", [[NSProcessInfo processInfo] hostName]];
+    netService = [[NSNetService alloc] initWithDomain:@"" type:MCChatServiceType name:serviceName port:self.listeningSocket.localPort];
+    netService.delegate = self;
+    [netService publish];
 }
 
-- (void)stopService
-{
-	[netService stop];
-	[netService release];
-	netService = nil;
+-(void)stopService {
+    self.listeningSocket = nil;
+    self.connectionSocket = nil;
+    self.messageBroker.delegate = nil;
+    self.messageBroker = nil;
+    [netService stop]; 
+    [netService release];    
+    [super dealloc];
 }
 
-#pragma mark NSNetServiceDelegate
+-(void)dealloc {
+    [self stopService];
+    [super dealloc];
+}
+
+#pragma mark Socket Callbacks
+-(BOOL)onSocketWillConnect:(AsyncSocket *)sock {
+    if ( self.connectionSocket == nil ) {
+        self.connectionSocket = sock;
+        return YES;
+    }
+    return NO;
+}
+
+-(void)onSocketDidDisconnect:(AsyncSocket *)sock {
+    if ( sock == self.connectionSocket ) {
+        self.connectionSocket = nil;
+        self.messageBroker = nil;
+    }
+}
+
+-(void)onSocket:(AsyncSocket *)sock didConnectToHost:(NSString *)host port:(UInt16)port {
+    MCMessageBroker *newBroker = [[[MCMessageBroker alloc] initWithAsyncSocket:sock] autorelease];
+    newBroker.delegate = self;
+    self.messageBroker = newBroker;
+}
+
+#pragma mark MTMessageBroker Delegate Methods
+-(void)messageBroker:(MCMessageBroker *)server didReceiveMessage:(MCMessage *)message {
+    if ( message.tag == 100 ) {
+        lastMessage = [[[NSString alloc] initWithData:message.dataContent encoding:NSUTF8StringEncoding] autorelease];
+		DLog(@"LastMessage : %@", lastMessage);
+    }
+}
+
+#pragma mark Net Service Delegate Methods
+-(void)netService:(NSNetService *)aNetService didNotPublish:(NSDictionary *)dict {
+    NSLog(@"Failed to publish: %@", dict);
+}
+
 
 @end

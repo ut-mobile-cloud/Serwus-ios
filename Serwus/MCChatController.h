@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 
 
-@interface MCChatController : UIViewController {
+@interface MCChatController : UIViewController<UITextFieldDelegate, UITextViewDelegate> {
     
+	UITextField *inputTextField;
 }
 
+@property (nonatomic, retain) IBOutlet UITextField *inputTextField;
 @end

@@ -39,6 +39,8 @@
 		25A7F79913A0FB7100F4BD57 /* DebugLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A7F79713A0FB7100F4BD57 /* DebugLog.m */; };
 		25A7F79C13A0FDA300F4BD57 /* MCChatServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A7F79B13A0FDA300F4BD57 /* MCChatServer.m */; };
 		25A7F79F13A1072800F4BD57 /* MCChatClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A7F79E13A1072800F4BD57 /* MCChatClient.m */; };
+		25B48EC813A62AF10073330A /* MCMessageBroker.m in Sources */ = {isa = PBXBuildFile; fileRef = 25B48EC713A62AF10073330A /* MCMessageBroker.m */; };
+		25B48EDD13A62E700073330A /* MCChatServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 25B48EDC13A62E700073330A /* MCChatServiceManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +96,10 @@
 		25A7F79B13A0FDA300F4BD57 /* MCChatServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCChatServer.m; sourceTree = "<group>"; };
 		25A7F79D13A1072800F4BD57 /* MCChatClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCChatClient.h; sourceTree = "<group>"; };
 		25A7F79E13A1072800F4BD57 /* MCChatClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCChatClient.m; sourceTree = "<group>"; };
+		25B48EC613A62AF10073330A /* MCMessageBroker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCMessageBroker.h; sourceTree = "<group>"; };
+		25B48EC713A62AF10073330A /* MCMessageBroker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCMessageBroker.m; sourceTree = "<group>"; };
+		25B48EDB13A62E700073330A /* MCChatServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCChatServiceManager.h; sourceTree = "<group>"; };
+		25B48EDC13A62E700073330A /* MCChatServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCChatServiceManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +190,7 @@
 		25A7F76513A0E8CF00F4BD57 /* Serwus */ = {
 			isa = PBXGroup;
 			children = (
+				25B48EC413A62A2D0073330A /* UI */,
 				2554A19313A25C030086E87A /* External */,
 				2554A19213A25B010086E87A /* Server */,
 				25A7F76E13A0E8CF00F4BD57 /* SerwusAppDelegate.h */,
@@ -205,6 +212,10 @@
 				2554A1F213A26C2A0086E87A /* MCServiceDetailsController.h */,
 				2554A1F313A26C2A0086E87A /* MCServiceDetailsController.m */,
 				2554A1F413A26C2A0086E87A /* MCServiceDetailsController.xib */,
+				25B48EC613A62AF10073330A /* MCMessageBroker.h */,
+				25B48EC713A62AF10073330A /* MCMessageBroker.m */,
+				25B48EDB13A62E700073330A /* MCChatServiceManager.h */,
+				25B48EDC13A62E700073330A /* MCChatServiceManager.m */,
 			);
 			path = Serwus;
 			sourceTree = "<group>";
@@ -239,6 +250,13 @@
 				25A7F78513A0E8D000F4BD57 /* SerwusTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		25B48EC413A62A2D0073330A /* UI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -364,6 +382,8 @@
 				2554A19613A25C030086E87A /* AsyncSocket.m in Sources */,
 				2554A1BD13A263440086E87A /* MCChatController.m in Sources */,
 				2554A1F513A26C2B0086E87A /* MCServiceDetailsController.m in Sources */,
+				25B48EC813A62AF10073330A /* MCMessageBroker.m in Sources */,
+				25B48EDD13A62E700073330A /* MCChatServiceManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
