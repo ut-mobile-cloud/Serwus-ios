@@ -10,6 +10,7 @@
 #import "MCServiceListController.h"
 #import "MCChatServer.h"
 #import "MCChatClientsManager.h"
+#import "MCWebServer.h"
 
 @implementation SerwusAppDelegate
 
@@ -18,6 +19,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+	[[MCWebServer sharedServer] setUpAndLaunch];
 	[self.window addSubview:tabBarController.view];
 	[[MCChatServer sharedServer] startService];
 	[[MCChatClientsManager sharedManager] search];

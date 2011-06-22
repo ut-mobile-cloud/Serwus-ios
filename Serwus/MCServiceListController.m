@@ -28,7 +28,7 @@
 - (void)servicesUpdated:(id)sender
 {
 	DLog(@"Services updated notification received. Updating table view");
-	[self.servicesTable reloadData];
+	[self.servicesTable reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationRight];
 }
 
 @dynamic servicesTable;

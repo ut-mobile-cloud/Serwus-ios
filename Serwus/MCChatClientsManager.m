@@ -30,7 +30,10 @@ NSString * const MCServicesUpdatedNotification = @"MCServicesUpdatedNotification
 
 - (void)search {
 	DLog(@"Manager will now search for services");
-    [self.browser searchForServicesOfType:MCChatServiceType inDomain:@""];
+//	[self.browser stop];
+//	[self.chatClients removeAllObjects];
+	[self.browser searchForServicesOfType:MCChatServiceType inDomain:@""];
+	
 }
 
 #pragma NSNetServiceBrowserDelegate
@@ -49,7 +52,10 @@ NSString * const MCServicesUpdatedNotification = @"MCServicesUpdatedNotification
 	DLog(@"Will remove a service");
 	for (MCChatClient *client in self.chatClients) {
 		if (client.remoteService == aService) {
+			DLog(@"found a client to remove. %d clients before removing", [self.chatClients count]);
 			[self.chatClients removeObject:client];
+			DLog(@"%d clients after removing", [self.chatClients count]);
+			[[NSNotificationCenter defaultCenter] postNotificationName:MCServicesUpdatedNotification object:self];
 		}
 	}
 }
@@ -59,6 +65,7 @@ NSString * const MCServicesUpdatedNotification = @"MCServicesUpdatedNotification
 	DLog(@"Resolved a service");
 	for (MCChatClient *client in self.chatClients) {
 		if (client.remoteService == service) {
+			DLog(@"Found a service to remove");
 			client.socket = [[[AsyncSocket alloc] initWithDelegate:self] autorelease];
 			[client.socket connectToAddress:service.addresses.lastObject error:&error];
 		}
