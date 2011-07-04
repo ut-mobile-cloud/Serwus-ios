@@ -11,8 +11,6 @@
 #import "MCChatClient.h"
 #import "AsyncSocket.h"
 
-NSString * const MCServicesUpdatedNotification = @"MCServicesUpdatedNotification";
-
 @implementation MCChatClientsManager
 
 @synthesize browser;
@@ -32,7 +30,7 @@ NSString * const MCServicesUpdatedNotification = @"MCServicesUpdatedNotification
 	DLog(@"Manager will now search for services");
 //	[self.browser stop];
 //	[self.chatClients removeAllObjects];
-	[self.browser searchForServicesOfType:MCChatServiceType inDomain:@""];
+	[self.browser searchForServicesOfType:MCChatServiceType inDomain:@""]; // Empty domain results to searching from local.
 	
 }
 

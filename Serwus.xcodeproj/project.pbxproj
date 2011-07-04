@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2527C53413BC6C2A0038F2DE /* MCServiceBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2527C53313BC6C2A0038F2DE /* MCServiceBrowser.m */; };
+		2527C53E13BC88DC0038F2DE /* MCServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2527C53D13BC88DC0038F2DE /* MCServiceCell.xib */; };
+		2527C54213BCCAB30038F2DE /* MCRestServiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2527C54013BCCAB30038F2DE /* MCRestServiceController.m */; };
+		2527C54313BCCAB30038F2DE /* MCRestServiceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2527C54113BCCAB30038F2DE /* MCRestServiceController.xib */; };
 		2554A19013A25A9E0086E87A /* MCMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2554A18F13A25A9E0086E87A /* MCMessage.m */; };
 		2554A19613A25C030086E87A /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2554A19513A25C030086E87A /* AsyncSocket.m */; };
 		2554A1A013A25EB20086E87A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2554A19F13A25EB20086E87A /* CFNetwork.framework */; };
@@ -33,7 +37,6 @@
 		25627FB213B1F02600D2E9D2 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 25627FA513B1F02600D2E9D2 /* SBJsonUTF8Stream.m */; };
 		25627FB313B1F02600D2E9D2 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 25627FA713B1F02600D2E9D2 /* SBJsonWriter.m */; };
 		25627FB613B1F13100D2E9D2 /* MCUserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25627FB513B1F13100D2E9D2 /* MCUserTests.m */; };
-		256AF66B13A6437D004F4B11 /* MCChatClientsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AF66A13A6437D004F4B11 /* MCChatClientsManager.m */; };
 		2591B0A613AB5C8A009594DB /* libCocoaHTTPServer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2591B0A513AB5C8A009594DB /* libCocoaHTTPServer.a */; };
 		2591B0B013AB5E74009594DB /* Web in Resources */ = {isa = PBXBuildFile; fileRef = 2591B0AF13AB5E74009594DB /* Web */; };
 		2591B0BE13AB68BE009594DB /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2591B0BD13AB68BE009594DB /* libxml2.dylib */; };
@@ -94,6 +97,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2527C53213BC6C2A0038F2DE /* MCServiceBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCServiceBrowser.h; sourceTree = "<group>"; };
+		2527C53313BC6C2A0038F2DE /* MCServiceBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCServiceBrowser.m; sourceTree = "<group>"; };
+		2527C53D13BC88DC0038F2DE /* MCServiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MCServiceCell.xib; sourceTree = "<group>"; };
+		2527C53F13BCCAB30038F2DE /* MCRestServiceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCRestServiceController.h; sourceTree = "<group>"; };
+		2527C54013BCCAB30038F2DE /* MCRestServiceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCRestServiceController.m; sourceTree = "<group>"; };
+		2527C54113BCCAB30038F2DE /* MCRestServiceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MCRestServiceController.xib; sourceTree = "<group>"; };
 		2554A18E13A25A9E0086E87A /* MCMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCMessage.h; sourceTree = "<group>"; };
 		2554A18F13A25A9E0086E87A /* MCMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCMessage.m; sourceTree = "<group>"; };
 		2554A19413A25C030086E87A /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
@@ -457,6 +466,8 @@
 				25B48EC713A62AF10073330A /* MCMessageBroker.m */,
 				256AF66913A6437D004F4B11 /* MCChatClientsManager.h */,
 				256AF66A13A6437D004F4B11 /* MCChatClientsManager.m */,
+				2527C53213BC6C2A0038F2DE /* MCServiceBrowser.h */,
+				2527C53313BC6C2A0038F2DE /* MCServiceBrowser.m */,
 			);
 			path = Serwus;
 			sourceTree = "<group>";
@@ -507,6 +518,10 @@
 				25A7F79213A0F9D300F4BD57 /* MCServiceListController.h */,
 				25A7F79313A0F9D300F4BD57 /* MCServiceListController.m */,
 				25A7F79413A0F9D300F4BD57 /* MCServiceListController.xib */,
+				2527C53D13BC88DC0038F2DE /* MCServiceCell.xib */,
+				2527C53F13BCCAB30038F2DE /* MCRestServiceController.h */,
+				2527C54013BCCAB30038F2DE /* MCRestServiceController.m */,
+				2527C54113BCCAB30038F2DE /* MCRestServiceController.xib */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -606,6 +621,8 @@
 				2554A1F113A26B6C0086E87A /* reload@2x.png in Resources */,
 				2554A1F613A26C2B0086E87A /* MCServiceDetailsController.xib in Resources */,
 				2591B0B013AB5E74009594DB /* Web in Resources */,
+				2527C53E13BC88DC0038F2DE /* MCServiceCell.xib in Resources */,
+				2527C54313BCCAB30038F2DE /* MCRestServiceController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -652,7 +669,6 @@
 				2554A1BD13A263440086E87A /* MCChatController.m in Sources */,
 				2554A1F513A26C2B0086E87A /* MCServiceDetailsController.m in Sources */,
 				25B48EC813A62AF10073330A /* MCMessageBroker.m in Sources */,
-				256AF66B13A6437D004F4B11 /* MCChatClientsManager.m in Sources */,
 				2591B0D913AB68FB009594DB /* ASIAuthenticationDialog.m in Sources */,
 				2591B0DA13AB68FB009594DB /* ASIDataCompressor.m in Sources */,
 				2591B0DB13AB68FB009594DB /* ASIDataDecompressor.m in Sources */,
@@ -679,6 +695,8 @@
 				25627FB113B1F02600D2E9D2 /* SBJsonTokeniser.m in Sources */,
 				25627FB213B1F02600D2E9D2 /* SBJsonUTF8Stream.m in Sources */,
 				25627FB313B1F02600D2E9D2 /* SBJsonWriter.m in Sources */,
+				2527C53413BC6C2A0038F2DE /* MCServiceBrowser.m in Sources */,
+				2527C54213BCCAB30038F2DE /* MCRestServiceController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

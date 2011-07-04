@@ -14,15 +14,14 @@
 
 @synthesize users=_users;
 
-- (NSDictionary *)dictRepresentation
-{
-	NSArray *keys = [NSArray arrayWithObject:@"users"];
-	return [self dictionaryWithValuesForKeys:keys];
-}
-
 - (NSString *)jsonRepresentation
-{
-	return [[self dictRepresentation] JSONRepresentation];
+{	NSArray *userFields = [NSArray arrayWithObjects:@"fullName", @"username", @"picture", @"status", nil];
+	NSMutableArray *usersAsDictionaries = [NSMutableArray arrayWithCapacity:0];
+	for (MCUser *user in self.users) {
+		NSDictionary *userDict = [user dictionaryWithValuesForKeys:userFields];
+		[usersAsDictionaries addObject:userDict];
+	}
+	return [usersAsDictionaries JSONRepresentation];
 }
 
 - (NSData *)doPostWithInfo:(NSDictionary *)info
@@ -68,7 +67,7 @@
 
 - (void)addUser:(MCUser *)user
 {
-	if ([user isKindOfClass:[MCUsers class]]) {
+	if ([user isKindOfClass:[MCUser class]]) {
 		[self.users addObject:user];
 	}
 	

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString * const MCServicesUpdatedNotification;
+
 @interface MCChatClientsManager : NSObject<NSNetServiceBrowserDelegate> {
 	@private
 	NSNetServiceBrowser *browser;

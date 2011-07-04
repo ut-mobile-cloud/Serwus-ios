@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString * const MCWebServerServiceType;
+extern NSString * const MCWebServerServiceBaseName;
+
 @class HTTPServer;
 @interface MCWebServer : NSObject {
 	@private

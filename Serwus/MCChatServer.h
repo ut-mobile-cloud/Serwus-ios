@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 extern const int MCChatServicePort;
+extern NSString * const MCChatServiceBaseName;
 extern NSString * const MCChatServiceType;
 
 @class AsyncSocket;

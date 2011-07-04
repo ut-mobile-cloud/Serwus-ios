@@ -10,6 +10,8 @@
 #import "HTTPServer.h"
 #import "MCRestConnectionHandler.h"
 
+NSString * const MCWebServerServiceType = @"_http._tcp.";
+NSString * const MCWebServerServiceBaseName = @"Mobile cloud REST service";
 const int MCHttpServerPort = 7766;
 
 @interface MCWebServer ()
@@ -30,7 +32,9 @@ const int MCHttpServerPort = 7766;
 - (void)setUpAndLaunch
 {
 	[httpServer setPort:MCHttpServerPort];
-	[httpServer setType:@"_http._tcp."];
+	[httpServer setType:MCWebServerServiceType];
+	NSString *uniqueServerName = [NSString stringWithFormat:@"%@::%@", MCWebServerServiceBaseName, [[NSProcessInfo processInfo] hostName]];
+	[httpServer setName:uniqueServerName];
 	[httpServer setConnectionClass:MCRestConnectionHandler.class];
 	NSString *webPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Web"];
 	[httpServer setDocumentRoot:webPath];

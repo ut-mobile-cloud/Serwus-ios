@@ -8,67 +8,98 @@
 
 #import "MCServiceListController.h"
 #import "MCServiceDetailsController.h"
-#import "MCChatServer.h"
-#import "MCChatClient.h"
-#import "MCChatClientsManager.h"
+#import "MCServiceBrowser.h"
 
 #define MCServiceListTableViewTag 1111
+#define MCServiceCellServiceNameTag 5000
+#define MCServiceCellServiceTypeImageTag 5001
+
+static NSString * const MCServiceCellReuseIdentifier = @"MCServiceCellReuseIdentifier";
+
 @interface MCServiceListController (BonjourDiscovery)
 @end
 
 @implementation MCServiceListController
 
+@dynamic servicesTable;
+@synthesize customServiceListCell;
+
+- (UITableViewCell *)loadCell
+{
+	[[NSBundle mainBundle] loadNibNamed:@"MCServiceCell" owner:self options:nil];
+	return self.customServiceListCell;
+}
 - (void)refreshPressed:(id)sender
 {
 	DLog(@"Requesting search of clients");
-	MCChatClientsManager *manager = [MCChatClientsManager sharedManager];
-	[manager search];
+	[[MCServiceBrowser sharedBrowser] search];
 }
 
 - (void)servicesUpdated:(id)sender
 {
 	DLog(@"Services updated notification received. Updating table view");
-	[self.servicesTable reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationRight];
+	[self.servicesTable reloadData];
 }
 
-@dynamic servicesTable;
 - (UITableView *)servicesTable
 {
 	return (UITableView *)[self.view viewWithTag:MCServiceListTableViewTag];
 }
+
 #pragma mark UITableViewDataSource
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	NSInteger rows = [MCChatClientsManager sharedManager].chatClients.count;
+	NSInteger rows = 0;
+	if (section == 0) {
+		rows = [[MCServiceBrowser sharedBrowser].chatServices count];
+	} else if(section == 1) {
+		rows = [[MCServiceBrowser sharedBrowser].restServices count];
+	}
 	DLog(@"TableView will have %d rows", rows);
 	return rows;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-	NSInteger sections = 1;
+	NSInteger sections = 2;
 	return sections;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *cellIdentifier = @"MCSerwusTableViewCellIdentifier";
 	
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MCServiceCellReuseIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier] autorelease];
+        cell = [self loadCell];
     }
-	MCChatClient *chatClient = [[MCChatClientsManager sharedManager].chatClients objectAtIndex:indexPath.row];
-	cell.textLabel.numberOfLines = 0;
-	cell.textLabel.text = [NSString stringWithFormat:@"%@ : %@", [chatClient.remoteService name], [chatClient.remoteService hostName]];
+	
+	int serviceType = indexPath.section == 0 ? kMCChatServiceType : kMCRestServiceType;
+	NSNetService *service = [[MCServiceBrowser sharedBrowser] serviceOfType:serviceType atIndex:indexPath.row];
+	UILabel *serviceName = (UILabel *)[cell viewWithTag:MCServiceCellServiceNameTag];
+	serviceName.text = [service name];
     return cell;
 }
 
 
 #pragma mark UITableViewDelegate
 // All method optional
-// - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+ - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	return 88;
+}
 // - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section;
 // - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section;
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+	NSString *headerTitle = nil;
+	if (section == 0) {
+		headerTitle = @"Chat";
+	} else if (section == 1) {
+		headerTitle = @"REST services";
+	}
+	return headerTitle;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	MCServiceDetailsController *serviceDetailsController = [[MCServiceDetailsController alloc] initWithNibName:@"MCServiceDetailsController" bundle:[NSBundle mainBundle]];
@@ -103,6 +134,7 @@
 
 - (void)viewDidUnload
 {
+	[self setCustomServiceListCell:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -126,6 +158,7 @@
 
 - (void)dealloc
 {
+	[customServiceListCell release];
     [super dealloc];
 }
 

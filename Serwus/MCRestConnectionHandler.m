@@ -9,6 +9,8 @@
 #import "MCRestConnectionHandler.h"
 #import "HTTPMessage.h"
 #import "HTTPDataResponse.h"
+#import "MCRestResourceProvider.h"
+#import "MCRestResource.h"
 
 @implementation MCRestConnectionHandler
 
@@ -29,10 +31,11 @@
 
 - (NSObject<HTTPResponse> *)httpResponseForMethod:(NSString *)method URI:(NSString *)path
 {
-	NSData *response = nil;
-	if ([method isEqualToString:@"GET"]) {
-		response = [@"Nothing here" dataUsingEncoding:NSUTF8StringEncoding];
-	}
-	return [[[HTTPDataResponse alloc] initWithData:response] autorelease];
+	NSData *responseData = nil;
+	DLog(@"path : %@", path);
+	id<MCRestResource> restResource = [[MCRestResourceProvider sharedProvider] resourceForMethod:@"POST" atPath:path withData:nil];
+	responseData = [restResource doGetWithInfo:nil];
+	HTTPDataResponse *response = [[[HTTPDataResponse alloc] initWithData:response] autorelease];
+	return response;
 }
 @end

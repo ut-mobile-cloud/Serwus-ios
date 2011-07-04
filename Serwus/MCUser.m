@@ -7,7 +7,7 @@
 //
 
 #import "MCUser.h"
-#import "JSON.h"
+#import "SBJson.h"
 
 @implementation MCUser
 

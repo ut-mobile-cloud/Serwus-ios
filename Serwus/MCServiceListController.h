@@ -11,8 +11,10 @@
 
 @interface MCServiceListController : UIViewController<UITableViewDataSource, UITableViewDelegate> {
     
+	UITableViewCell *customServiceListCell;
 }
 
 @property (nonatomic, readonly) UITableView *servicesTable;
+@property (nonatomic, retain) IBOutlet UITableViewCell *customServiceListCell;
 
 @end

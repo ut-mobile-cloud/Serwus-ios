@@ -20,6 +20,6 @@
 - (id)init;
 - (void)addUsers:(NSArray *)users;
 - (void)addUser:(MCUser *)user;
-- (NSDictionary *)dictRepresentation;
 - (NSString *)jsonRepresentation;
+
 @end
