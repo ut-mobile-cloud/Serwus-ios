@@ -77,6 +77,7 @@
 		25A7F79C13A0FDA300F4BD57 /* MCChatServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A7F79B13A0FDA300F4BD57 /* MCChatServer.m */; };
 		25A7F79F13A1072800F4BD57 /* MCChatClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A7F79E13A1072800F4BD57 /* MCChatClient.m */; };
 		25B48EC813A62AF10073330A /* MCMessageBroker.m in Sources */ = {isa = PBXBuildFile; fileRef = 25B48EC713A62AF10073330A /* MCMessageBroker.m */; };
+		25CE357113C458AE006F7459 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25CE357013C458AE006F7459 /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -228,6 +229,7 @@
 		25A7F79E13A1072800F4BD57 /* MCChatClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCChatClient.m; sourceTree = "<group>"; };
 		25B48EC613A62AF10073330A /* MCMessageBroker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCMessageBroker.h; sourceTree = "<group>"; };
 		25B48EC713A62AF10073330A /* MCMessageBroker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCMessageBroker.m; sourceTree = "<group>"; };
+		25CE357013C458AE006F7459 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +237,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25CE357113C458AE006F7459 /* CoreData.framework in Frameworks */,
 				2591B0E513AB6987009594DB /* SystemConfiguration.framework in Frameworks */,
 				2591B0E313AB6930009594DB /* MobileCoreServices.framework in Frameworks */,
 				2591B0C013AB68D7009594DB /* libz.dylib in Frameworks */,
@@ -431,6 +434,7 @@
 		25A7F75E13A0E8CF00F4BD57 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				25CE357013C458AE006F7459 /* CoreData.framework */,
 				2591B0E413AB6987009594DB /* SystemConfiguration.framework */,
 				2591B0E213AB692F009594DB /* MobileCoreServices.framework */,
 				2591B0BF13AB68D7009594DB /* libz.dylib */,

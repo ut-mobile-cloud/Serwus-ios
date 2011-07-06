@@ -1,0 +1,10 @@
+ABOUT
+
+	Serwus is an application that demonstrates automatic discovery of services over the network. Services are provided by mobile devices (currently iOS devices). Current application advertises 2 services: chat room functionality (implemented using TCP sockets) and a REST web service that gives information about users that are connected to a particular device.
+
+	Devices will automatically configure themselves and advertise the chat + rest service available on them. Bonjour (Apple's implementation of Zeroconf) is used for automatic configuration and discovery.
+	
+RUNNING
+
+	This project uses the CocoaHTTPServer (available from http://code.google.com/p/cocoahttpserver/). It should be in a folder named CocoaHTTPServer in the same folder as Serwus application is. Other than that running from Xcode should be straight forward.
+
