@@ -15,10 +15,15 @@
 @synthesize users=_users;
 
 - (NSString *)jsonRepresentation
-{	NSArray *userFields = [NSArray arrayWithObjects:@"fullName", @"username", @"picture", @"status", nil];
-	NSMutableArray *usersAsDictionaries = [NSMutableArray arrayWithCapacity:0];
+{	NSMutableArray *usersAsDictionaries = [NSMutableArray arrayWithCapacity:0];
+	NSString *urlKey = @"url";
+	NSString *descriptionKey = @"description";
 	for (MCUser *user in self.users) {
-		NSDictionary *userDict = [user dictionaryWithValuesForKeys:userFields];
+		NSString *descriptionValue = user.fullName;
+		NSString *urlValue = [NSString stringWithFormat:@"/users/%@", user.username];
+		NSDictionary *userDict = [NSMutableDictionary dictionaryWithCapacity:2];
+		[userDict setValue:descriptionValue forKey:descriptionKey];
+		[userDict setValue:urlValue forKey:urlKey];
 		[usersAsDictionaries addObject:userDict];
 	}
 	return [usersAsDictionaries JSONRepresentation];

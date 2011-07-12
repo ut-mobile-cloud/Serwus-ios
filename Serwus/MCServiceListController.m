@@ -9,6 +9,8 @@
 #import "MCServiceListController.h"
 #import "MCServiceDetailsController.h"
 #import "MCServiceBrowser.h"
+#import "MCChatController.h"
+#import "MCChatClient.h"
 
 #define MCServiceListTableViewTag 1111
 #define MCServiceCellServiceNameTag 5000
@@ -16,13 +18,30 @@
 
 static NSString * const MCServiceCellReuseIdentifier = @"MCServiceCellReuseIdentifier";
 
-@interface MCServiceListController (BonjourDiscovery)
+@interface MCServiceListController (PrivateMethods)
+- (void)handleUserSelectedChatService:(NSNetService *)service;
+- (void)handleUserSelectedRestService:(NSNetService *)service;
 @end
 
 @implementation MCServiceListController
 
 @dynamic servicesTable;
 @synthesize customServiceListCell;
+
+- (void)handleUserSelectedChatService:(NSNetService *)service
+{
+	MCChatController *chatController = [[MCChatController alloc] initWithNibName:@"MCChatController" bundle:nil];
+	chatController.chatClient = [[MCChatClient alloc] initWithWebService:service];
+	[self.navigationController pushViewController:chatController animated:YES];
+	[chatController release];
+}
+
+- (void)handleUserSelectedRestService:(NSNetService *)service
+{
+	MCServiceDetailsController *serviceDetailsController = [[MCServiceDetailsController alloc] initWithNibName:@"MCServiceDetailsController" bundle:[NSBundle mainBundle]];
+	[self.navigationController pushViewController:serviceDetailsController animated:YES];
+	[serviceDetailsController release];
+}
 
 - (UITableViewCell *)loadCell
 {
@@ -102,9 +121,16 @@ static NSString * const MCServiceCellReuseIdentifier = @"MCServiceCellReuseIdent
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	MCServiceDetailsController *serviceDetailsController = [[MCServiceDetailsController alloc] initWithNibName:@"MCServiceDetailsController" bundle:[NSBundle mainBundle]];
-	[self.navigationController pushViewController:serviceDetailsController animated:YES];
-	[serviceDetailsController release];
+	
+	MCServiceType serviceType = indexPath.section == 0 ? kMCChatServiceType : kMCRestServiceType;
+	
+	NSNetService *service = [[MCServiceBrowser sharedBrowser] serviceOfType:serviceType atIndex:indexPath.row];
+	
+	if (serviceType == kMCChatServiceType) {
+		[self handleUserSelectedChatService:service];
+	} else if(serviceType == kMCRestServiceType) {
+		[self handleUserSelectedRestService:service];
+	}
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

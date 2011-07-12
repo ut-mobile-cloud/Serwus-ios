@@ -7,10 +7,10 @@
 //
 
 #import "MCChatController.h"
-
+#import "MCChatClient.h"
 
 @implementation MCChatController
-@synthesize inputTextField;
+@synthesize inputTextField, chatClient;
 
 
 #pragma mark UITextFieldDelegate
@@ -83,6 +83,7 @@
 
 - (void)dealloc
 {
+	[chatClient release];
 	[inputTextField release];
     [super dealloc];
 }

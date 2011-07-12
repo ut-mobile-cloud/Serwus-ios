@@ -36,8 +36,10 @@
 
 - (NSData *)doGetWithInfo:(NSDictionary *)info
 {
-	[NSException raise:@"Not implemented yet" format:@"", nil];
-	return nil;
+	NSArray *keys = [NSArray arrayWithObjects:@"fullName", @"username", @"picture", @"status", nil];
+	NSDictionary *dictRepresentation = [self dictionaryWithValuesForKeys:keys];
+	DLog(@"Making GET on USER. DICT : %@", dictRepresentation);
+	return [[dictRepresentation JSONRepresentation] dataUsingEncoding:NSUTF8StringEncoding];
 }
 
 - (NSData *)doPutWithInfo:(NSDictionary *)info

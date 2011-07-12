@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		251DE35013C5973000B593A4 /* MCDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 251DE34F13C5973000B593A4 /* MCDataStore.m */; };
+		2521D00F13CC3685000F39B9 /* MCChatRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 2521D00E13CC3685000F39B9 /* MCChatRoom.m */; };
 		2527C53413BC6C2A0038F2DE /* MCServiceBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2527C53313BC6C2A0038F2DE /* MCServiceBrowser.m */; };
 		2527C53E13BC88DC0038F2DE /* MCServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2527C53D13BC88DC0038F2DE /* MCServiceCell.xib */; };
-		2527C54213BCCAB30038F2DE /* MCRestServiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2527C54013BCCAB30038F2DE /* MCRestServiceController.m */; };
-		2527C54313BCCAB30038F2DE /* MCRestServiceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2527C54113BCCAB30038F2DE /* MCRestServiceController.xib */; };
 		2554A19013A25A9E0086E87A /* MCMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2554A18F13A25A9E0086E87A /* MCMessage.m */; };
 		2554A19613A25C030086E87A /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2554A19513A25C030086E87A /* AsyncSocket.m */; };
 		2554A1A013A25EB20086E87A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2554A19F13A25EB20086E87A /* CFNetwork.framework */; };
@@ -78,6 +78,9 @@
 		25A7F79F13A1072800F4BD57 /* MCChatClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A7F79E13A1072800F4BD57 /* MCChatClient.m */; };
 		25B48EC813A62AF10073330A /* MCMessageBroker.m in Sources */ = {isa = PBXBuildFile; fileRef = 25B48EC713A62AF10073330A /* MCMessageBroker.m */; };
 		25CE357113C458AE006F7459 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25CE357013C458AE006F7459 /* CoreData.framework */; };
+		25CE35CF13C49B49006F7459 /* MCRestBrowserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25CE35CD13C49B49006F7459 /* MCRestBrowserController.m */; };
+		25CE35D013C49B49006F7459 /* MCRestBrowserController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25CE35CE13C49B49006F7459 /* MCRestBrowserController.xib */; };
+		25E1327513C71C28005D8FB1 /* MCChatRooms.m in Sources */ = {isa = PBXBuildFile; fileRef = 25E1327413C71C28005D8FB1 /* MCChatRooms.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,12 +101,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		251DE34E13C5973000B593A4 /* MCDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCDataStore.h; sourceTree = "<group>"; };
+		251DE34F13C5973000B593A4 /* MCDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCDataStore.m; sourceTree = "<group>"; };
+		2521D00D13CC3685000F39B9 /* MCChatRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCChatRoom.h; sourceTree = "<group>"; };
+		2521D00E13CC3685000F39B9 /* MCChatRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCChatRoom.m; sourceTree = "<group>"; };
 		2527C53213BC6C2A0038F2DE /* MCServiceBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCServiceBrowser.h; sourceTree = "<group>"; };
 		2527C53313BC6C2A0038F2DE /* MCServiceBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCServiceBrowser.m; sourceTree = "<group>"; };
 		2527C53D13BC88DC0038F2DE /* MCServiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MCServiceCell.xib; sourceTree = "<group>"; };
-		2527C53F13BCCAB30038F2DE /* MCRestServiceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCRestServiceController.h; sourceTree = "<group>"; };
-		2527C54013BCCAB30038F2DE /* MCRestServiceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCRestServiceController.m; sourceTree = "<group>"; };
-		2527C54113BCCAB30038F2DE /* MCRestServiceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MCRestServiceController.xib; sourceTree = "<group>"; };
 		2554A18E13A25A9E0086E87A /* MCMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCMessage.h; sourceTree = "<group>"; };
 		2554A18F13A25A9E0086E87A /* MCMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCMessage.m; sourceTree = "<group>"; };
 		2554A19413A25C030086E87A /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
@@ -230,6 +234,11 @@
 		25B48EC613A62AF10073330A /* MCMessageBroker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCMessageBroker.h; sourceTree = "<group>"; };
 		25B48EC713A62AF10073330A /* MCMessageBroker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCMessageBroker.m; sourceTree = "<group>"; };
 		25CE357013C458AE006F7459 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		25CE35CC13C49B49006F7459 /* MCRestBrowserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCRestBrowserController.h; sourceTree = "<group>"; };
+		25CE35CD13C49B49006F7459 /* MCRestBrowserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCRestBrowserController.m; sourceTree = "<group>"; };
+		25CE35CE13C49B49006F7459 /* MCRestBrowserController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MCRestBrowserController.xib; sourceTree = "<group>"; };
+		25E1327313C71C28005D8FB1 /* MCChatRooms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCChatRooms.h; sourceTree = "<group>"; };
+		25E1327413C71C28005D8FB1 /* MCChatRooms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCChatRooms.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -386,6 +395,10 @@
 				2591B10913AB88A7009594DB /* MCUsers.m */,
 				2591B10B13AB89B2009594DB /* MCUser.h */,
 				2591B10C13AB89B2009594DB /* MCUser.m */,
+				25E1327313C71C28005D8FB1 /* MCChatRooms.h */,
+				25E1327413C71C28005D8FB1 /* MCChatRooms.m */,
+				2521D00D13CC3685000F39B9 /* MCChatRoom.h */,
+				2521D00E13CC3685000F39B9 /* MCChatRoom.m */,
 			);
 			name = REST;
 			sourceTree = "<group>";
@@ -458,7 +471,6 @@
 				2554A19213A25B010086E87A /* Server */,
 				25A7F76E13A0E8CF00F4BD57 /* SerwusAppDelegate.h */,
 				25A7F76F13A0E8CF00F4BD57 /* SerwusAppDelegate.m */,
-				25A7F77113A0E8CF00F4BD57 /* MainWindow.xib */,
 				25A7F76613A0E8CF00F4BD57 /* Supporting Files */,
 				25A7F79A13A0FDA300F4BD57 /* MCChatServer.h */,
 				25A7F79B13A0FDA300F4BD57 /* MCChatServer.m */,
@@ -472,6 +484,8 @@
 				256AF66A13A6437D004F4B11 /* MCChatClientsManager.m */,
 				2527C53213BC6C2A0038F2DE /* MCServiceBrowser.h */,
 				2527C53313BC6C2A0038F2DE /* MCServiceBrowser.m */,
+				251DE34E13C5973000B593A4 /* MCDataStore.h */,
+				251DE34F13C5973000B593A4 /* MCDataStore.m */,
 			);
 			path = Serwus;
 			sourceTree = "<group>";
@@ -513,6 +527,7 @@
 		25B48EC413A62A2D0073330A /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				25A7F77113A0E8CF00F4BD57 /* MainWindow.xib */,
 				2554A1BA13A263430086E87A /* MCChatController.h */,
 				2554A1BB13A263440086E87A /* MCChatController.m */,
 				2554A1BC13A263440086E87A /* MCChatController.xib */,
@@ -523,9 +538,9 @@
 				25A7F79313A0F9D300F4BD57 /* MCServiceListController.m */,
 				25A7F79413A0F9D300F4BD57 /* MCServiceListController.xib */,
 				2527C53D13BC88DC0038F2DE /* MCServiceCell.xib */,
-				2527C53F13BCCAB30038F2DE /* MCRestServiceController.h */,
-				2527C54013BCCAB30038F2DE /* MCRestServiceController.m */,
-				2527C54113BCCAB30038F2DE /* MCRestServiceController.xib */,
+				25CE35CC13C49B49006F7459 /* MCRestBrowserController.h */,
+				25CE35CD13C49B49006F7459 /* MCRestBrowserController.m */,
+				25CE35CE13C49B49006F7459 /* MCRestBrowserController.xib */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -626,7 +641,7 @@
 				2554A1F613A26C2B0086E87A /* MCServiceDetailsController.xib in Resources */,
 				2591B0B013AB5E74009594DB /* Web in Resources */,
 				2527C53E13BC88DC0038F2DE /* MCServiceCell.xib in Resources */,
-				2527C54313BCCAB30038F2DE /* MCRestServiceController.xib in Resources */,
+				25CE35D013C49B49006F7459 /* MCRestBrowserController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -700,7 +715,10 @@
 				25627FB213B1F02600D2E9D2 /* SBJsonUTF8Stream.m in Sources */,
 				25627FB313B1F02600D2E9D2 /* SBJsonWriter.m in Sources */,
 				2527C53413BC6C2A0038F2DE /* MCServiceBrowser.m in Sources */,
-				2527C54213BCCAB30038F2DE /* MCRestServiceController.m in Sources */,
+				25CE35CF13C49B49006F7459 /* MCRestBrowserController.m in Sources */,
+				251DE35013C5973000B593A4 /* MCDataStore.m in Sources */,
+				25E1327513C71C28005D8FB1 /* MCChatRooms.m in Sources */,
+				2521D00F13CC3685000F39B9 /* MCChatRoom.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

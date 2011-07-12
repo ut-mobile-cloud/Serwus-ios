@@ -9,8 +9,16 @@
 #import "MCRestResourceProvider.h"
 #import "MCUsers.h"
 #import "MCUser.h"
+#import "MCChatRooms.h"
 
 @implementation MCRestResourceProvider
+@synthesize users = _users;
+
+@dynamic rooms;
+- (MCChatRooms *)rooms
+{
+	return nil;
+}
 
 + (MCRestResourceProvider *)sharedProvider
 {
@@ -21,16 +29,31 @@
 	return instance;
 }
 
-- (id<MCRestResource>)resourceForMethod:(NSString *)method atPath:(NSString *)path withData:(NSData *)data
+- (MCUsers *)getAllUsers
 {
-	MCUsers *users = [[MCUsers alloc] init];
-	MCUser *userA = [[MCUser alloc] initWithFullName:@"Madis Nõmme" username:@"madis" picture:@"none" status:@"online"];
-	MCUser *userB = [[MCUser alloc] initWithFullName:@"Toomas Peet" username:@"toomas" picture:@"none" status:@"offline"];
-	[users addUser:userA];
-	[users addUser:userB];
-	return users;
+	
+	return self.users;
 }
 
+- (MCUser *)getUserForName:(NSString *)username
+{
+	for (MCUser *user in self.users.users) {
+		if ([user.username isEqualToString:username]) {
+			return user;
+		}
+	}
+	return nil;
+}
+
+- (MCChatRooms *)getAllRooms
+{
+	return nil;
+}
+
+- (MCChatRoom *)getRoomForName:(NSString *)roomName
+{
+	return nil;
+}
 - (BOOL)hasResourceAtPath:(NSString *)path forMethod:(NSString *)method
 {
 	if ([path isEqualToString:@"/users"]) {
@@ -43,7 +66,11 @@
 {
 	self = [super init];
 	if (self != nil) {
-	
+		_users = [[MCUsers alloc] init];
+		MCUser *userA = [[[MCUser alloc] initWithFullName:@"Madis Nõmme" username:@"madis" picture:@"none" status:@"online"] autorelease];
+		MCUser *userB = [[[MCUser alloc] initWithFullName:@"Toomas Peet" username:@"toomas" picture:@"none" status:@"offline"] autorelease];
+		[_users addUser:userA];
+		[_users addUser:userB];
 	}
 	return self;
 }
