@@ -7,6 +7,7 @@
 //
 
 #import "MCRestResourceProvider.h"
+#import "MCRootResources.h"
 #import "MCUsers.h"
 #import "MCUser.h"
 #import "MCChatRooms.h"
@@ -27,6 +28,11 @@
 		instance = [[MCRestResourceProvider alloc] init];
 	}
 	return instance;
+}
+
+- (MCRootResources *)getRootResources
+{
+	return [[[MCRootResources alloc] init] autorelease];
 }
 
 - (MCUsers *)getAllUsers

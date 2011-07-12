@@ -10,6 +10,7 @@
 
 @protocol MCRestResource;
 
+@class MCRootResources;
 @class MCUsers;
 @class MCChatRooms;
 @class MCUser;
@@ -26,6 +27,7 @@
 + (MCRestResourceProvider *)sharedProvider;
 
 // DAO Methods
+- (MCRootResources *)getRootResources;
 - (MCUsers *)getAllUsers;
 - (MCUser *)getUserForName:(NSString *)username;
 - (MCChatRooms *)getAllRooms;

@@ -23,11 +23,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Serwus/MCRestConnectionHandler.m"
-         timestampString = "332150689.065"
+         timestampString = "332165155.58587"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "40"
-         endingLineNumber = "40"
+         startingLineNumber = "41"
+         endingLineNumber = "41"
          landmarkName = "-httpResponseForMethod:URI:"
          landmarkType = "5">
       </FileBreakpoint>

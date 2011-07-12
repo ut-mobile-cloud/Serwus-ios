@@ -11,6 +11,7 @@
 #import "HTTPDataResponse.h"
 #import "MCRestResourceProvider.h"
 #import "MCRestResource.h"
+#import "MCRootResources.h"
 #import "MCChatRooms.h"
 #import "MCChatRoom.h"
 #import "MCUsers.h"
@@ -48,7 +49,10 @@
 		2 level is Madis
 	 */
 	NSArray *pathComponents = [path componentsSeparatedByString:@"/"];
-	if (pathComponents != nil && pathComponents.count == 2) {
+	if (pathComponents != nil && [path isEqualToString:@"/"]) {
+		// It's a root resource. Give the list
+		restResource = [[MCRestResourceProvider sharedProvider] getRootResources];
+	} else if (pathComponents != nil && pathComponents.count == 2) {
 		// Request is for top level resource /users /rooms
 		NSString *topLevelResourceName = [pathComponents objectAtIndex:1];
 		if ([topLevelResourceName isEqualToString:@"users"]) { // Handle users

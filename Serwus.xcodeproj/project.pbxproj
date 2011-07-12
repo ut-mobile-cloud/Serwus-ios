@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		251DE35013C5973000B593A4 /* MCDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 251DE34F13C5973000B593A4 /* MCDataStore.m */; };
 		2521D00F13CC3685000F39B9 /* MCChatRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 2521D00E13CC3685000F39B9 /* MCChatRoom.m */; };
+		2521D01213CC6D9E000F39B9 /* MCRootResources.m in Sources */ = {isa = PBXBuildFile; fileRef = 2521D01113CC6D9D000F39B9 /* MCRootResources.m */; };
 		2527C53413BC6C2A0038F2DE /* MCServiceBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2527C53313BC6C2A0038F2DE /* MCServiceBrowser.m */; };
 		2527C53E13BC88DC0038F2DE /* MCServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2527C53D13BC88DC0038F2DE /* MCServiceCell.xib */; };
 		2554A19013A25A9E0086E87A /* MCMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2554A18F13A25A9E0086E87A /* MCMessage.m */; };
@@ -105,6 +106,8 @@
 		251DE34F13C5973000B593A4 /* MCDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCDataStore.m; sourceTree = "<group>"; };
 		2521D00D13CC3685000F39B9 /* MCChatRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCChatRoom.h; sourceTree = "<group>"; };
 		2521D00E13CC3685000F39B9 /* MCChatRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCChatRoom.m; sourceTree = "<group>"; };
+		2521D01013CC6D9D000F39B9 /* MCRootResources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCRootResources.h; sourceTree = "<group>"; };
+		2521D01113CC6D9D000F39B9 /* MCRootResources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCRootResources.m; sourceTree = "<group>"; };
 		2527C53213BC6C2A0038F2DE /* MCServiceBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCServiceBrowser.h; sourceTree = "<group>"; };
 		2527C53313BC6C2A0038F2DE /* MCServiceBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCServiceBrowser.m; sourceTree = "<group>"; };
 		2527C53D13BC88DC0038F2DE /* MCServiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MCServiceCell.xib; sourceTree = "<group>"; };
@@ -399,6 +402,8 @@
 				25E1327413C71C28005D8FB1 /* MCChatRooms.m */,
 				2521D00D13CC3685000F39B9 /* MCChatRoom.h */,
 				2521D00E13CC3685000F39B9 /* MCChatRoom.m */,
+				2521D01013CC6D9D000F39B9 /* MCRootResources.h */,
+				2521D01113CC6D9D000F39B9 /* MCRootResources.m */,
 			);
 			name = REST;
 			sourceTree = "<group>";
@@ -719,6 +724,7 @@
 				251DE35013C5973000B593A4 /* MCDataStore.m in Sources */,
 				25E1327513C71C28005D8FB1 /* MCChatRooms.m in Sources */,
 				2521D00F13CC3685000F39B9 /* MCChatRoom.m in Sources */,
+				2521D01213CC6D9E000F39B9 /* MCRootResources.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

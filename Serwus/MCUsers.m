@@ -31,7 +31,7 @@
 
 - (NSData *)doPostWithInfo:(NSDictionary *)info
 {
-	[NSException raise:@"Not implemented yet" format:@"", nil];
+	
 	return nil;
 }
 
