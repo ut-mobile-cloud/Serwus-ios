@@ -12,6 +12,7 @@
 #import "AsyncSocket.h"
 #import "MCMessage.h"
 
+NSString * const MCChatClientResolvedAddressNotification = @"MCChatClientResolvedAddressNotification";
 
 @interface MCChatClient () // We want these properties to be writable for the class itself
 
@@ -24,7 +25,6 @@
 
 @synthesize isConnected;
 @synthesize remoteService;
-@synthesize socket;
 @synthesize messageBroker;
 
 
@@ -39,6 +39,7 @@
     MCMessage *newMessage = [[[MCMessage alloc] init] autorelease];
     newMessage.tag = 100;
     newMessage.dataContent = data;
+	DLog(@"ChatClient sending message: %@", text);
     [self.messageBroker sendMessage:newMessage];
 }
 
@@ -56,20 +57,36 @@
 }
 
 -(void)onSocket:(AsyncSocket *)sock didConnectToHost:(NSString *)host port:(UInt16)port {      
-    MCMessageBroker *newBroker = [[[MCMessageBroker alloc] initWithAsyncSocket:socket] autorelease];
+    MCMessageBroker *newBroker = [[[MCMessageBroker alloc] initWithAsyncSocket:sock] autorelease];
     [sock release];
     newBroker.delegate = self;
     self.messageBroker = newBroker;
     self.isConnected = YES;
 }
 
+#pragma mark NSNetServiceDelegate
+
+- (void)netServiceDidResolveAddress:(NSNetService *)resolvedService
+{
+	DLog(@"ChatClient resolved address. Will create a socket");
+	AsyncSocket *socket = [[AsyncSocket alloc] initWithDelegate:self];
+	[socket connectToAddress:resolvedService.addresses.lastObject error:nil];
+}
+
+- (void)netService:(NSNetService *)sender didNotResolve:(NSDictionary *)errorDict
+{
+	
+}
 
 #pragma mark NSObject
 
-- (id)init
+- (id)initWithNetService:(NSNetService *)netService
 {
 	self = [super init];
 	if (self != nil) {
+		self.remoteService = netService;
+		netService.delegate = self;
+		[netService resolveWithTimeout:20];
 		self.isConnected = NO;
 	}
 	return self;
@@ -77,7 +94,6 @@
 
 -(void)dealloc {
 	[self.remoteService release];
-    [self.socket release];
     self.messageBroker.delegate = nil;
     [self.messageBroker release];
     [super dealloc];

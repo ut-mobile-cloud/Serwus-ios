@@ -8,10 +8,27 @@
 
 #import "MCChatController.h"
 #import "MCChatClient.h"
+#import "MCServiceBrowser.h"
 
 @implementation MCChatController
+@synthesize activityArea;
+@synthesize activityIndicator;
 @synthesize inputTextField, chatClient;
 
+
+- (void)startAnimating
+{
+	DLog(@"ChatController starting animating");
+	self.activityArea.hidden = NO;
+	[self.activityIndicator startAnimating];
+	[self performSelector:@selector(stopAnimating) withObject:nil afterDelay:5];
+}
+
+- (void)stopAnimating
+{
+	self.activityArea.hidden = YES;
+	[self.activityIndicator stopAnimating];
+}
 
 #pragma mark UITextFieldDelegate
 
@@ -24,6 +41,7 @@
 {
 	DLog(@"Send to chat : %@", textField.text);
 	// TODO: send text to chat
+	[self.chatClient send:textField.text];
 	textField.text = @"";
 	return YES;
 }
@@ -42,11 +60,16 @@
 }
 #pragma mark UIViewController
 
+- (void)awakeFromNib
+{
+	DLog(@"ChatController was awaken from nib");
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
+	DLog(@"ChatController was started using initWithNibName:bundle:");
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -54,12 +77,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+	DLog(@"viewDidLoad was called");
+	[self startAnimating];
 }
 
 - (void)viewDidUnload
 {
+	DLog(@"viewDidUnload was called");
 	[self setInputTextField:nil];
+	[self.chatClient release];
+	self.chatClient = nil;
+	[self setActivityArea:nil];
+	[self setActivityIndicator:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -85,6 +114,8 @@
 {
 	[chatClient release];
 	[inputTextField release];
+	[activityArea release];
+	[activityIndicator release];
     [super dealloc];
 }
 

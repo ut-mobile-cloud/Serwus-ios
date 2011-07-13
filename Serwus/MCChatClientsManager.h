@@ -9,16 +9,13 @@
 #import <Foundation/Foundation.h>
 
 
-@interface MCChatClientsManager : NSObject<NSNetServiceBrowserDelegate> {
+@interface MCChatClientsManager : NSObject {
 	@private
-	NSNetServiceBrowser *browser;
 	NSMutableArray *chatClients;
 }
 
 @property (nonatomic, readonly) NSMutableArray *chatClients;
-@property (nonatomic, readonly) NSNetServiceBrowser *browser;
 
 + (MCChatClientsManager *)sharedManager;
-- (void)search;
 
 @end

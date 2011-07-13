@@ -34,7 +34,7 @@ NSString * const MCChatServiceType = @"_mcchat1._tcp."; // Must be less than 14 
 -(void)startService {
     // Start listening socket
     NSError *error;
-    self.listeningSocket = [[[AsyncSocket alloc]initWithDelegate:self] autorelease];
+    self.listeningSocket = [[[AsyncSocket alloc] initWithDelegate:self] autorelease];
     if ( ![self.listeningSocket acceptOnPort:0 error:&error] ) {
         NSLog(@"Failed to create listening socket");
         return;
@@ -85,7 +85,9 @@ NSString * const MCChatServiceType = @"_mcchat1._tcp."; // Must be less than 14 
 }
 
 #pragma mark MTMessageBroker Delegate Methods
+
 -(void)messageBroker:(MCMessageBroker *)server didReceiveMessage:(MCMessage *)message {
+	DLog(@"Message Broker got a message : %@", [message dataContent]);
     if ( message.tag == 100 ) {
         lastMessage = [[[NSString alloc] initWithData:message.dataContent encoding:NSUTF8StringEncoding] autorelease];
 		DLog(@"LastMessage : %@", lastMessage);

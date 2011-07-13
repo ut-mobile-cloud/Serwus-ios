@@ -13,10 +13,14 @@
 @interface MCChatController : UIViewController<UITextFieldDelegate, UITextViewDelegate> {
     
 	UITextField *inputTextField;
+	UIView *activityArea;
+	UIActivityIndicatorView *activityIndicator;
 	MCChatClient *chatClient;
 }
 
 @property (nonatomic, retain) MCChatClient *chatClient;
 @property (nonatomic, retain) IBOutlet UITextField *inputTextField;
+@property (nonatomic, retain) IBOutlet UIView *activityArea;
+@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end

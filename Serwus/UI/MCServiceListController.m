@@ -31,7 +31,8 @@ static NSString * const MCServiceCellReuseIdentifier = @"MCServiceCellReuseIdent
 - (void)handleUserSelectedChatService:(NSNetService *)service
 {
 	MCChatController *chatController = [[MCChatController alloc] initWithNibName:@"MCChatController" bundle:nil];
-	chatController.chatClient = [[MCChatClient alloc] initWithWebService:service];
+	
+	chatController.chatClient = [[MCChatClient alloc] initWithNetService:service];
 	[self.navigationController pushViewController:chatController animated:YES];
 	[chatController release];
 }

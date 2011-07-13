@@ -16,7 +16,7 @@ typedef enum {
 	kMCUnknownServiceType
 } MCServiceType;
 
-@interface MCServiceBrowser : NSObject<NSNetServiceBrowserDelegate> {
+@interface MCServiceBrowser : NSObject<NSNetServiceBrowserDelegate, NSNetServiceDelegate> {
     @private
 	NSNetServiceBrowser *chatServiceBrowser;
 	NSNetServiceBrowser *restServiceBrowser;

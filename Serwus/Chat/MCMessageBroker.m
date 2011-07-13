@@ -68,6 +68,7 @@ const int SocketTimeout = -1;
 
 #pragma mark Sending/Receiving Messages
 -(void)sendMessage:(MCMessage *)message {
+	DLog(@"MessageBroker sending message");
     [messageQueue addObject:message];
     NSData *messageData = [NSKeyedArchiver archivedDataWithRootObject:message];
     UInt64 header[1];

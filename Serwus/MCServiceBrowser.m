@@ -39,6 +39,7 @@ MCServiceType ServiceTypeFromString(NSString *serviceName)
 	return instance;
 }
 
+// TODO: this method probably is not very useful, since discovery for new Bonjour services is carried out in background anyway.
 - (void)search
 {
 	DLog(@"Service Browser starting to search");
@@ -115,6 +116,11 @@ MCServiceType ServiceTypeFromString(NSString *serviceName)
 		[[NSNotificationCenter defaultCenter] postNotificationName:MCServicesUpdatedNotification object:self];
 	}
 }
+- (void)netServiceDidResolveAddress:(NSNetService *)service
+{
+	DLog(@"a net service was resolved");
+}
+
 #pragma mark NSObject
 
 - (id)init
