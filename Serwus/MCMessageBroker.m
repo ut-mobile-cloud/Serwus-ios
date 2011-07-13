@@ -109,7 +109,7 @@ const int SocketTimeout = -1;
         if ( !isPaused ) [socket readDataToLength:MessageHeaderSize withTimeout:SocketTimeout tag:(long)0];
     }
     else {
-        NSLog(@"Unknown tag in read of socket data %d", tag);
+        NSLog(@"Unknown tag in read of socket data %ld", tag);
     }
 }
 
