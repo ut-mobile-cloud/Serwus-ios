@@ -49,6 +49,8 @@
 		251133E613CDA6AC008D332D /* MCServiceDetailsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 251133B913CDA6AC008D332D /* MCServiceDetailsController.xib */; };
 		251133E713CDA6AC008D332D /* MCServiceListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 251133BB13CDA6AC008D332D /* MCServiceListController.m */; };
 		251133E813CDA6AC008D332D /* MCServiceListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 251133BC13CDA6AC008D332D /* MCServiceListController.xib */; };
+		251CACB213D02C6C0056285B /* tray_mail.png in Resources */ = {isa = PBXBuildFile; fileRef = 251CACB013D02C6C0056285B /* tray_mail.png */; };
+		251CACB313D02C6C0056285B /* tray_mail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 251CACB113D02C6C0056285B /* tray_mail@2x.png */; };
 		251DE35013C5973000B593A4 /* MCDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 251DE34F13C5973000B593A4 /* MCDataStore.m */; };
 		2527C53413BC6C2A0038F2DE /* MCServiceBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2527C53313BC6C2A0038F2DE /* MCServiceBrowser.m */; };
 		2554A1A013A25EB20086E87A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2554A19F13A25EB20086E87A /* CFNetwork.framework */; };
@@ -80,6 +82,10 @@
 		25A7F78913A0E8D000F4BD57 /* SerwusTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A7F78813A0E8D000F4BD57 /* SerwusTests.m */; };
 		25A7F79813A0FB7100F4BD57 /* DebugLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A7F79713A0FB7100F4BD57 /* DebugLog.m */; };
 		25A7F79913A0FB7100F4BD57 /* DebugLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A7F79713A0FB7100F4BD57 /* DebugLog.m */; };
+		25C2A3EA13D0642E001DEB0C /* MCChatClientListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C2A3E813D0642E001DEB0C /* MCChatClientListController.m */; };
+		25C2A3EB13D0642E001DEB0C /* MCChatClientListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25C2A3E913D0642E001DEB0C /* MCChatClientListController.xib */; };
+		25C2A3F613D071E2001DEB0C /* man.png in Resources */ = {isa = PBXBuildFile; fileRef = 25C2A3F413D071E2001DEB0C /* man.png */; };
+		25C2A3F713D071E2001DEB0C /* man@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25C2A3F513D071E2001DEB0C /* man@2x.png */; };
 		25CE357113C458AE006F7459 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25CE357013C458AE006F7459 /* CoreData.framework */; };
 		25F7174813CDC10500F4E1D4 /* MCChatClientsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F7174713CDC10500F4E1D4 /* MCChatClientsManager.m */; };
 		25F7174B13CDC44700F4E1D4 /* MCChatServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F7174A13CDC44700F4E1D4 /* MCChatServer.m */; };
@@ -189,6 +195,8 @@
 		251133BA13CDA6AC008D332D /* MCServiceListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCServiceListController.h; sourceTree = "<group>"; };
 		251133BB13CDA6AC008D332D /* MCServiceListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCServiceListController.m; sourceTree = "<group>"; };
 		251133BC13CDA6AC008D332D /* MCServiceListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MCServiceListController.xib; sourceTree = "<group>"; };
+		251CACB013D02C6C0056285B /* tray_mail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tray_mail.png; sourceTree = "<group>"; };
+		251CACB113D02C6C0056285B /* tray_mail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tray_mail@2x.png"; sourceTree = "<group>"; };
 		251DE34E13C5973000B593A4 /* MCDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCDataStore.h; sourceTree = "<group>"; };
 		251DE34F13C5973000B593A4 /* MCDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCDataStore.m; sourceTree = "<group>"; };
 		2527C53213BC6C2A0038F2DE /* MCServiceBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCServiceBrowser.h; sourceTree = "<group>"; };
@@ -238,6 +246,12 @@
 		25A7F78613A0E8D000F4BD57 /* SerwusTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SerwusTests.h; sourceTree = "<group>"; };
 		25A7F78813A0E8D000F4BD57 /* SerwusTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SerwusTests.m; sourceTree = "<group>"; };
 		25A7F79713A0FB7100F4BD57 /* DebugLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugLog.m; sourceTree = "<group>"; };
+		25C2A3E613D05697001DEB0C /* MCMessageBrokerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCMessageBrokerDelegate.h; sourceTree = "<group>"; };
+		25C2A3E713D0642E001DEB0C /* MCChatClientListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCChatClientListController.h; sourceTree = "<group>"; };
+		25C2A3E813D0642E001DEB0C /* MCChatClientListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCChatClientListController.m; sourceTree = "<group>"; };
+		25C2A3E913D0642E001DEB0C /* MCChatClientListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MCChatClientListController.xib; sourceTree = "<group>"; };
+		25C2A3F413D071E2001DEB0C /* man.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = man.png; sourceTree = "<group>"; };
+		25C2A3F513D071E2001DEB0C /* man@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "man@2x.png"; sourceTree = "<group>"; };
 		25CE357013C458AE006F7459 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		25F7174613CDC10500F4E1D4 /* MCChatClientsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCChatClientsManager.h; sourceTree = "<group>"; };
 		25F7174713CDC10500F4E1D4 /* MCChatClientsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCChatClientsManager.m; sourceTree = "<group>"; };
@@ -287,6 +301,7 @@
 				2511336213CDA6AC008D332D /* MCMessage.m */,
 				2511336313CDA6AC008D332D /* MCMessageBroker.h */,
 				2511336413CDA6AC008D332D /* MCMessageBroker.m */,
+				25C2A3E613D05697001DEB0C /* MCMessageBrokerDelegate.h */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -412,6 +427,9 @@
 				251133BA13CDA6AC008D332D /* MCServiceListController.h */,
 				251133BB13CDA6AC008D332D /* MCServiceListController.m */,
 				251133BC13CDA6AC008D332D /* MCServiceListController.xib */,
+				25C2A3E713D0642E001DEB0C /* MCChatClientListController.h */,
+				25C2A3E813D0642E001DEB0C /* MCChatClientListController.m */,
+				25C2A3E913D0642E001DEB0C /* MCChatClientListController.xib */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -419,6 +437,10 @@
 		2554A1B113A263050086E87A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				25C2A3F413D071E2001DEB0C /* man.png */,
+				25C2A3F513D071E2001DEB0C /* man@2x.png */,
+				251CACB013D02C6C0056285B /* tray_mail.png */,
+				251CACB113D02C6C0056285B /* tray_mail@2x.png */,
 				2554A1EE13A26B6C0086E87A /* reload.png */,
 				2554A1EF13A26B6C0086E87A /* reload@2x.png */,
 				2554A1B213A263050086E87A /* comment.png */,
@@ -648,6 +670,11 @@
 				251133E413CDA6AC008D332D /* MCServiceCell.xib in Resources */,
 				251133E613CDA6AC008D332D /* MCServiceDetailsController.xib in Resources */,
 				251133E813CDA6AC008D332D /* MCServiceListController.xib in Resources */,
+				251CACB213D02C6C0056285B /* tray_mail.png in Resources */,
+				251CACB313D02C6C0056285B /* tray_mail@2x.png in Resources */,
+				25C2A3EB13D0642E001DEB0C /* MCChatClientListController.xib in Resources */,
+				25C2A3F613D071E2001DEB0C /* man.png in Resources */,
+				25C2A3F713D071E2001DEB0C /* man@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -727,6 +754,7 @@
 				251133E713CDA6AC008D332D /* MCServiceListController.m in Sources */,
 				25F7174813CDC10500F4E1D4 /* MCChatClientsManager.m in Sources */,
 				25F7174B13CDC44700F4E1D4 /* MCChatServer.m in Sources */,
+				25C2A3EA13D0642E001DEB0C /* MCChatClientListController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

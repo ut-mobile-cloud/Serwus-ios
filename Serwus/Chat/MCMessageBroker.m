@@ -14,43 +14,7 @@ const int SocketTimeout = -1;
 
 @implementation MCMessageBroker
 
--(id)initWithAsyncSocket:(AsyncSocket *)newSocket {
-	self = [super init];
-    if (self != nil) {
-        if ( [newSocket canSafelySetDelegate] ) {
-            socket = [newSocket retain];
-            [newSocket setDelegate:self];
-            messageQueue = [NSMutableArray new];
-            [socket readDataToLength:MessageHeaderSize withTimeout:SocketTimeout tag:0];
-        }
-        else {
-            NSLog(@"Could not change delegate of socket");
-            [self release];
-            self = nil;
-        }
-    }
-    return self;
-}
-
--(void)dealloc {
-    [socket setDelegate:nil];
-    if ( [socket isConnected] ) [socket disconnect];
-    [socket release];
-    [messageQueue release];
-    [super dealloc];
-}
-
--(id)delegate {
-    return delegate;
-}
-
--(void)setDelegate:(id)value {
-    delegate = value;
-}
-
--(AsyncSocket *)socket {
-    return [[socket retain] autorelease];
-}
+@synthesize delegate, socket;
 
 -(void)setIsPaused:(BOOL)yn {
     if ( yn != isPaused ) {
@@ -65,8 +29,8 @@ const int SocketTimeout = -1;
     return isPaused;
 }
 
-
 #pragma mark Sending/Receiving Messages
+
 -(void)sendMessage:(MCMessage *)message {
 	DLog(@"MessageBroker sending message");
     [messageQueue addObject:message];
@@ -80,6 +44,7 @@ const int SocketTimeout = -1;
 
 
 #pragma mark Socket Callbacks
+
 -(void)onSocketDidDisconnect:(AsyncSocket *)sock {
     if ( connectionLostUnexpectedly ) {
         if ( delegate && [delegate respondsToSelector:@selector(messageBroker:didDisconnectUnexpectedly:)] ) {
@@ -124,5 +89,34 @@ const int SocketTimeout = -1;
         }
     }
 }
+
+#pragma mark NSObject
+
+-(id)initWithAsyncSocket:(AsyncSocket *)newSocket {
+	self = [super init];
+    if (self != nil) {
+        if ( [newSocket canSafelySetDelegate] ) {
+            socket = [newSocket retain];
+            [newSocket setDelegate:self];
+            messageQueue = [NSMutableArray new];
+            [socket readDataToLength:MessageHeaderSize withTimeout:SocketTimeout tag:0];
+        }
+        else {
+            NSLog(@"Could not change delegate of socket");
+            [self release];
+            self = nil;
+        }
+    }
+    return self;
+}
+
+-(void)dealloc {
+    [socket setDelegate:nil];
+    if ( [socket isConnected] ) [socket disconnect];
+    [socket release];
+    [messageQueue release];
+    [super dealloc];
+}
+
 
 @end

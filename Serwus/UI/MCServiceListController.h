@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString * const MCUserSelectedChatNotification;
+extern NSString * const MCSelectedChatClientKey;
 
 @interface MCServiceListController : UIViewController<UITableViewDataSource, UITableViewDelegate> {
     

@@ -12,18 +12,31 @@
 #import "MCChatClientsManager.h"
 #import "MCWebServer.h"
 #import "MCServiceBrowser.h"
+#import "UI/MCChatClientListController.h"
 
 @implementation SerwusAppDelegate
 
 @synthesize window=_window;
 @synthesize tabBarController;
+@synthesize chatListNavigationController;
+@synthesize chatListController;
+
+- (void)userSelectedChat:(NSNotification *)notification
+{
+	DLog(@"User selected chat with info : %@", [notification userInfo]);
+	NSDictionary *userInfo = [notification userInfo];
+	
+	self.tabBarController.selectedViewController = self.chatListNavigationController;
+	[self.chatListController userSelectedChatClient:[userInfo objectForKey:MCSelectedChatClientKey]];
+	
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 	[[MCWebServer sharedServer] setUpAndLaunch];
 	[[MCChatServer sharedServer] startService];
 	[[MCServiceBrowser sharedBrowser] search];
-//	[[MCChatClientsManager sharedManager] search];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userSelectedChat:) name:MCUserSelectedChatNotification object:nil];
 	
 	[self.window addSubview:tabBarController.view];
 	[self.window makeKeyAndVisible];
@@ -32,8 +45,11 @@
 
 - (void)dealloc
 {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[_window release];
 	[tabBarController release];
+	[chatListNavigationController release];
+	[chatListController release];
     [super dealloc];
 }
 

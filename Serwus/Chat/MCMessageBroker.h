@@ -7,33 +7,24 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MCMessageBrokerDelegate.h"
 
 @class AsyncSocket;
 @class MCMessage;
 @class MCMessageBroker;
 
-@interface NSObject (MCMessageBrokerDelegateMethods)
-
--(void)messageBroker:(MCMessageBroker *)server didSendMessage:(MCMessage *)message;
--(void)messageBroker:(MCMessageBroker *)server didReceiveMessage:(MCMessage *)message;
--(void)messageBrokerDidDisconnectUnexpectedly:(MCMessageBroker *)server;
-
-@end
-
 @interface MCMessageBroker : NSObject {
     AsyncSocket *socket;
     BOOL connectionLostUnexpectedly;
-    id delegate;
+    id<MCMessageBrokerDelegate> delegate;
     NSMutableArray *messageQueue;
     BOOL isPaused;
 }
 
+@property (nonatomic, assign) id<MCMessageBrokerDelegate> delegate;
+@property (nonatomic, readonly) AsyncSocket *socket;
+
 -(id)initWithAsyncSocket:(AsyncSocket *)socket;
-
--(id)delegate;
--(void)setDelegate:(id)value;
-
--(AsyncSocket *)socket;
 
 -(void)sendMessage:(MCMessage *)newMessage;
 

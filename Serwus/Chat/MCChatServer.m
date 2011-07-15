@@ -19,8 +19,8 @@ NSString * const MCChatServiceType = @"_mcchat1._tcp."; // Must be less than 14 
 @implementation MCChatServer
 
 @synthesize listeningSocket;
-@synthesize connectionSocket;
 @synthesize messageBroker;
+@synthesize clientBrokers;
 
 + (MCChatServer *)sharedServer
 {
@@ -29,6 +29,17 @@ NSString * const MCChatServiceType = @"_mcchat1._tcp."; // Must be less than 14 
 		instance = [[MCChatServer alloc] init];
 	}
 	return instance;
+}
+
+- (MCMessageBroker *)findBrokerWithSocket:(AsyncSocket *)socket
+{
+	MCMessageBroker *foundBroker = nil;
+	for (MCMessageBroker *broker in self.clientBrokers) {
+		if (broker.socket == socket) {
+			foundBroker = broker;
+		}
+	}
+	return foundBroker;
 }
 
 -(void)startService {
@@ -44,12 +55,11 @@ NSString * const MCChatServiceType = @"_mcchat1._tcp."; // Must be less than 14 
     netService = [[NSNetService alloc] initWithDomain:@"local." type:MCChatServiceType name:uniqueServiceName port:self.listeningSocket.localPort];
     netService.delegate = self;
     [netService publish];
-	DLog(@"I published my service");
+	DLog(@"ChatServer published bonjour service");
 }
 
 -(void)stopService {
     self.listeningSocket = nil;
-    self.connectionSocket = nil;
     self.messageBroker.delegate = nil;
     self.messageBroker = nil;
     [netService stop]; 
@@ -57,47 +67,57 @@ NSString * const MCChatServiceType = @"_mcchat1._tcp."; // Must be less than 14 
     [super dealloc];
 }
 
--(void)dealloc {
-    [self stopService];
-    [super dealloc];
-}
-
 #pragma mark Socket Callbacks
+//! 
 -(BOOL)onSocketWillConnect:(AsyncSocket *)sock {
-    if ( self.connectionSocket == nil ) {
-        self.connectionSocket = sock;
-        return YES;
-    }
+	if ([self findBrokerWithSocket:sock] == nil) {
+		return YES;
+	}
     return NO;
 }
 
 -(void)onSocketDidDisconnect:(AsyncSocket *)sock {
-    if ( sock == self.connectionSocket ) {
-        self.connectionSocket = nil;
-        self.messageBroker = nil;
-    }
+	MCMessageBroker *brokerToBeDisconnected = [self findBrokerWithSocket:sock];
+	if (brokerToBeDisconnected == nil) {
+		return;
+	}
+	[self.clientBrokers removeObject:brokerToBeDisconnected];
+	// TODO: send out notification to possible view controllers that might be interested that a socket has been closed
+	
 }
 
 -(void)onSocket:(AsyncSocket *)sock didConnectToHost:(NSString *)host port:(UInt16)port {
-    MCMessageBroker *newBroker = [[[MCMessageBroker alloc] initWithAsyncSocket:sock] autorelease];
+	DLog(@"Server accepted new connection on host %@ port: %i", host, port);
+	MCMessageBroker *newBroker = [[[MCMessageBroker alloc] initWithAsyncSocket:sock] autorelease];
     newBroker.delegate = self;
-    self.messageBroker = newBroker;
+    [self.clientBrokers addObject:newBroker];
 }
 
-#pragma mark MTMessageBroker Delegate Methods
+#pragma mark MCMessageBrokerDelegate
 
 -(void)messageBroker:(MCMessageBroker *)server didReceiveMessage:(MCMessage *)message {
-	DLog(@"Message Broker got a message : %@", [message dataContent]);
-    if ( message.tag == 100 ) {
-        lastMessage = [[[NSString alloc] initWithData:message.dataContent encoding:NSUTF8StringEncoding] autorelease];
-		DLog(@"LastMessage : %@", lastMessage);
-    }
+	NSString *aMessage = [[[NSString alloc] initWithData:message.dataContent encoding:NSUTF8StringEncoding] autorelease];
+	DLog(@"Will send message: %@ to all clients", aMessage);
+	
+	// Send this message to all connected clients. We're echoing.
+	int counter = 0;
+	for (MCMessageBroker *broker in self.clientBrokers) {
+		DLog(@"Server sending message : %d'th time", counter++);
+		[broker sendMessage:message];
+	}
 }
 
 #pragma mark Net Service Delegate Methods
+
 -(void)netService:(NSNetService *)aNetService didNotPublish:(NSDictionary *)dict {
     NSLog(@"Failed to publish: %@", dict);
 }
 
+#pragma mark NSObject
 
+-(void)dealloc {
+    [self stopService];
+	[clientBrokers release];
+    [super dealloc];
+}
 @end

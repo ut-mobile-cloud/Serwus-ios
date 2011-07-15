@@ -11,16 +11,21 @@
 #import "MCServiceBrowser.h"
 #import "MCChatController.h"
 #import "MCChatClient.h"
+#import "MCChatClientsManager.h"
 
 #define MCServiceListTableViewTag 1111
 #define MCServiceCellServiceNameTag 5000
 #define MCServiceCellServiceTypeImageTag 5001
 
 static NSString * const MCServiceCellReuseIdentifier = @"MCServiceCellReuseIdentifier";
+NSString * const MCUserSelectedChatNotification = @"MCUserSelectedChatNotification";
+NSString * const MCSelectedChatClientKey = @"MCSelectedChatClientKey";
 
 @interface MCServiceListController (PrivateMethods)
+
 - (void)handleUserSelectedChatService:(NSNetService *)service;
 - (void)handleUserSelectedRestService:(NSNetService *)service;
+
 @end
 
 @implementation MCServiceListController
@@ -30,11 +35,12 @@ static NSString * const MCServiceCellReuseIdentifier = @"MCServiceCellReuseIdent
 
 - (void)handleUserSelectedChatService:(NSNetService *)service
 {
-	MCChatController *chatController = [[MCChatController alloc] initWithNibName:@"MCChatController" bundle:nil];
+	MCChatClient *newClient = [[[MCChatClient alloc] initWithNetService:service] autorelease];
 	
-	chatController.chatClient = [[MCChatClient alloc] initWithNetService:service];
-	[self.navigationController pushViewController:chatController animated:YES];
-	[chatController release];
+	[[MCChatClientsManager sharedManager] addClient:newClient];
+
+	NSDictionary *userInfo = [NSDictionary dictionaryWithObject:newClient forKey:MCSelectedChatClientKey];
+	[[NSNotificationCenter defaultCenter] postNotificationName:MCUserSelectedChatNotification object:self userInfo:userInfo];
 }
 
 - (void)handleUserSelectedRestService:(NSNetService *)service

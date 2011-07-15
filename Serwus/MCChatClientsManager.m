@@ -7,10 +7,7 @@
 //
 
 #import "MCChatClientsManager.h"
-#import "MCServiceBrowser.h"
-#import "MCChatServer.h"
 #import "MCChatClient.h"
-#import "AsyncSocket.h"
 
 @implementation MCChatClientsManager
 
@@ -24,6 +21,18 @@
 		instance = [[MCChatClientsManager alloc] init];
 	}
 	return instance;
+}
+
+- (void)addClient: (MCChatClient *)client
+{
+	[self.chatClients addObject:client];
+}
+
+- (void)removeClient: (MCChatClient *)client
+{
+	if ([self.chatClients containsObject:client]) {
+		[self.chatClients removeObject:client];
+	}
 }
 
 #pragma mark NSObject

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-
+@class MCChatClient;
 @interface MCChatClientsManager : NSObject {
 	@private
 	NSMutableArray *chatClients;
@@ -17,5 +17,7 @@
 @property (nonatomic, readonly) NSMutableArray *chatClients;
 
 + (MCChatClientsManager *)sharedManager;
+- (void)addClient: (MCChatClient *)client;
+- (void)removeClient: (MCChatClient *)client;
 
 @end

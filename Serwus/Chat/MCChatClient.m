@@ -26,8 +26,27 @@ NSString * const MCChatClientResolvedAddressNotification = @"MCChatClientResolve
 @synthesize isConnected;
 @synthesize remoteService;
 @synthesize messageBroker;
+@synthesize socket;
 
 
+@dynamic name;
+
+- (NSString *)name
+{
+	return @"Just a name";
+}
+
+#pragma mark MCMessageBroker
+
+- (void)messageBroker:(MCMessageBroker *)server didSendMessage:(MCMessage *)message
+{
+	DLog(@"Message broker SENT message");
+}
+
+- (void)messageBroker:(MCMessageBroker *)server didReceiveMessage:(MCMessage *)message
+{
+	DLog(@"Message broker RECEIVED message : %@", [NSString stringWithUTF8String:[[message dataContent]bytes]]);
+}
 
 -(void)connect {
     remoteService.delegate = self;
@@ -69,13 +88,13 @@ NSString * const MCChatClientResolvedAddressNotification = @"MCChatClientResolve
 - (void)netServiceDidResolveAddress:(NSNetService *)resolvedService
 {
 	DLog(@"ChatClient resolved address. Will create a socket");
-	AsyncSocket *socket = [[AsyncSocket alloc] initWithDelegate:self];
+	self.socket = [[[AsyncSocket alloc] initWithDelegate:self] autorelease];
 	[socket connectToAddress:resolvedService.addresses.lastObject error:nil];
 }
 
 - (void)netService:(NSNetService *)sender didNotResolve:(NSDictionary *)errorDict
 {
-	
+	DDLog(@"ERROR");
 }
 
 #pragma mark NSObject
@@ -86,17 +105,19 @@ NSString * const MCChatClientResolvedAddressNotification = @"MCChatClientResolve
 	if (self != nil) {
 		self.remoteService = netService;
 		netService.delegate = self;
-		[netService resolveWithTimeout:20];
+		[netService resolveWithTimeout:10];
 		self.isConnected = NO;
 	}
 	return self;
 }
 
 -(void)dealloc {
+	[self.socket disconnect];
+	[self.socket release];
 	[self.remoteService release];
-    self.messageBroker.delegate = nil;
-    [self.messageBroker release];
-    [super dealloc];
+	[self.messageBroker release];
+	self.messageBroker.delegate = nil;
+	[super dealloc];
 }
 
 @end
