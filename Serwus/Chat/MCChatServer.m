@@ -44,9 +44,9 @@ NSString * const MCChatServiceType = @"_mcchat1._tcp."; // Must be less than 14 
 
 -(void)startService {
     // Start listening socket
-    NSError *error;
+    NSError *error = nil;
     self.listeningSocket = [[[AsyncSocket alloc] initWithDelegate:self] autorelease];
-    if ( ![self.listeningSocket acceptOnPort:0 error:&error] ) {
+    if ( ![self.listeningSocket acceptOnPort:54321 error:&error] ) {
         NSLog(@"Failed to create listening socket");
         return;
     }

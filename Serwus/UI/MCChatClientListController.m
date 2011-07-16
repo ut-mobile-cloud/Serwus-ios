@@ -19,6 +19,7 @@
 - (void)userSelectedChatClient:(MCChatClient *)client
 {
 	MCChatController *chatController = [[MCChatController alloc] initWithNibName:@"MCChatController" bundle:nil];
+	chatController.chatClient = client;
 	[self.navigationController pushViewController:chatController animated:YES];
 	[chatController release];
 }

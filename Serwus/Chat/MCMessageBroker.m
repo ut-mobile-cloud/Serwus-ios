@@ -58,6 +58,7 @@ const int SocketTimeout = -1;
 }
 
 -(void)onSocket:(AsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
+	DLog(@"Socket did read some data");
     if ( tag == 0 ) {
         // Header
         UInt64 header = *((UInt64*)[data bytes]);

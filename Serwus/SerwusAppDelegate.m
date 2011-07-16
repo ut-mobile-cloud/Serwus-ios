@@ -25,7 +25,6 @@
 {
 	DLog(@"User selected chat with info : %@", [notification userInfo]);
 	NSDictionary *userInfo = [notification userInfo];
-	
 	self.tabBarController.selectedViewController = self.chatListNavigationController;
 	[self.chatListController userSelectedChatClient:[userInfo objectForKey:MCSelectedChatClientKey]];
 	
