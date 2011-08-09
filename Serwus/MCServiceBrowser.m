@@ -9,7 +9,8 @@
 #import "MCServiceBrowser.h"
 #import "MCChatServer.h"
 #import "MCWebServer.h"
-
+#import "MCChatClientsManager.h"
+#import "MCChatClient.h"
 NSString * const MCServicesUpdatedNotification = @"MCServicesUpdatedNotification";
 
 MCServiceType ServiceTypeFromString(NSString *serviceName)
@@ -79,6 +80,9 @@ MCServiceType ServiceTypeFromString(NSString *serviceName)
 		case kMCChatServiceType:
 			DLog(@"Got a Chat service");
 			[self.chatServices addObject:aService];
+			MCChatClient *newClient = [[MCChatClient alloc] initWithNetService:aService];
+			[[MCChatClientsManager sharedManager] addClient:newClient];
+			[newClient release];
 			break;
 		case kMCUnknownServiceType:
 			DLog(@"Got Unknown service type");
@@ -115,10 +119,6 @@ MCServiceType ServiceTypeFromString(NSString *serviceName)
 	if (moreComing == NO) {
 		[[NSNotificationCenter defaultCenter] postNotificationName:MCServicesUpdatedNotification object:self];
 	}
-}
-- (void)netServiceDidResolveAddress:(NSNetService *)service
-{
-	DLog(@"a net service was resolved");
 }
 
 #pragma mark NSObject

@@ -31,6 +31,8 @@
 		251CACB313D02C6C0056285B /* tray_mail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 251CACB113D02C6C0056285B /* tray_mail@2x.png */; };
 		251DE35013C5973000B593A4 /* MCDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 251DE34F13C5973000B593A4 /* MCDataStore.m */; };
 		2527C53413BC6C2A0038F2DE /* MCServiceBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2527C53313BC6C2A0038F2DE /* MCServiceBrowser.m */; };
+		252E3FD913E15DF00033B77F /* MCPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 252E3FD813E15DF00033B77F /* MCPicture.m */; };
+		252E3FE213E1702E0033B77F /* logo2.png in Resources */ = {isa = PBXBuildFile; fileRef = 252E3FE113E1702E0033B77F /* logo2.png */; };
 		2554A1A013A25EB20086E87A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2554A19F13A25EB20086E87A /* CFNetwork.framework */; };
 		2554A1B613A263050086E87A /* comment.png in Resources */ = {isa = PBXBuildFile; fileRef = 2554A1B213A263050086E87A /* comment.png */; };
 		2554A1B713A263050086E87A /* comment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2554A1B313A263050086E87A /* comment@2x.png */; };
@@ -151,6 +153,9 @@
 		251DE34F13C5973000B593A4 /* MCDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCDataStore.m; sourceTree = "<group>"; };
 		2527C53213BC6C2A0038F2DE /* MCServiceBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCServiceBrowser.h; sourceTree = "<group>"; };
 		2527C53313BC6C2A0038F2DE /* MCServiceBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCServiceBrowser.m; sourceTree = "<group>"; };
+		252E3FD713E15DF00033B77F /* MCPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPicture.h; sourceTree = "<group>"; };
+		252E3FD813E15DF00033B77F /* MCPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPicture.m; sourceTree = "<group>"; };
+		252E3FE113E1702E0033B77F /* logo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo2.png; sourceTree = "<group>"; };
 		2554A19F13A25EB20086E87A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		2554A1B213A263050086E87A /* comment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comment.png; sourceTree = "<group>"; };
 		2554A1B313A263050086E87A /* comment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comment@2x.png"; sourceTree = "<group>"; };
@@ -326,6 +331,8 @@
 				251133AC13CDA6AC008D332D /* MCUsers.m */,
 				251133AD13CDA6AC008D332D /* MCWebServer.h */,
 				251133AE13CDA6AC008D332D /* MCWebServer.m */,
+				252E3FD713E15DF00033B77F /* MCPicture.h */,
+				252E3FD813E15DF00033B77F /* MCPicture.m */,
 			);
 			path = REST;
 			sourceTree = "<group>";
@@ -351,6 +358,14 @@
 				25C2A3E913D0642E001DEB0C /* MCChatClientListController.xib */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		252E3FDA13E162360033B77F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				252E3FE113E1702E0033B77F /* logo2.png */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		2554A1B113A263050086E87A /* Images */ = {
@@ -401,6 +416,7 @@
 		25A7F75013A0E8CF00F4BD57 = {
 			isa = PBXGroup;
 			children = (
+				252E3FDA13E162360033B77F /* Resources */,
 				25C2A44413D087D7001DEB0C /* External */,
 				25A7F76513A0E8CF00F4BD57 /* Serwus */,
 				2554A1B113A263050086E87A /* Images */,
@@ -675,6 +691,7 @@
 				25C2A3EB13D0642E001DEB0C /* MCChatClientListController.xib in Resources */,
 				25C2A3F613D071E2001DEB0C /* man.png in Resources */,
 				25C2A3F713D071E2001DEB0C /* man@2x.png in Resources */,
+				252E3FE213E1702E0033B77F /* logo2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -755,6 +772,7 @@
 				25C2A48D13D087D7001DEB0C /* SBJsonUTF8Stream.m in Sources */,
 				25C2A48E13D087D7001DEB0C /* SBJsonWriter.m in Sources */,
 				25C2A48F13D087D7001DEB0C /* Reachability.m in Sources */,
+				252E3FD913E15DF00033B77F /* MCPicture.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

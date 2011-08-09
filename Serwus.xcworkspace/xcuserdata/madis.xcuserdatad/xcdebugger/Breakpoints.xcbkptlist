@@ -37,11 +37,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Serwus/MCServiceBrowser.m"
-         timestampString = "331137233.528125"
+         timestampString = "332774711.855725"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "45"
-         endingLineNumber = "45"
+         startingLineNumber = "46"
+         endingLineNumber = "46"
          landmarkName = "-search"
          landmarkType = "5">
       </FileBreakpoint>
@@ -51,12 +51,26 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Serwus/MCServiceBrowser.m"
-         timestampString = "331137233.528125"
+         timestampString = "332774711.855725"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "86"
-         endingLineNumber = "86"
+         startingLineNumber = "90"
+         endingLineNumber = "90"
          landmarkName = "-netServiceBrowser:didFindService:moreComing:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Serwus/UI/MCServiceDetailsController.m"
+         timestampString = "334586655.62034"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "116"
+         endingLineNumber = "116"
+         landmarkName = "-netServiceDidResolveAddress:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

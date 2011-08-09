@@ -46,6 +46,7 @@ NSString * const MCSelectedChatClientKey = @"MCSelectedChatClientKey";
 - (void)handleUserSelectedRestService:(NSNetService *)service
 {
 	MCServiceDetailsController *serviceDetailsController = [[MCServiceDetailsController alloc] initWithNibName:@"MCServiceDetailsController" bundle:[NSBundle mainBundle]];
+	serviceDetailsController.netService = service;
 	[self.navigationController pushViewController:serviceDetailsController animated:YES];
 	[serviceDetailsController release];
 }

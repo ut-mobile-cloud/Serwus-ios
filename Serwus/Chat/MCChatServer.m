@@ -7,8 +7,6 @@
 //
 
 #import "MCChatServer.h"
-#import "AsyncSocket.h"
-#import "MCMessageBroker.h"
 #import "MCMessage.h"
 
 const int MCChatServicePort = 54321;
@@ -19,8 +17,7 @@ NSString * const MCChatServiceType = @"_mcchat1._tcp."; // Must be less than 14 
 @implementation MCChatServer
 
 @synthesize listeningSocket;
-@synthesize messageBroker;
-@synthesize clientBrokers;
+@synthesize clients;
 
 + (MCChatServer *)sharedServer
 {
@@ -31,21 +28,9 @@ NSString * const MCChatServiceType = @"_mcchat1._tcp."; // Must be less than 14 
 	return instance;
 }
 
-- (MCMessageBroker *)findBrokerWithSocket:(AsyncSocket *)socket
-{
-	MCMessageBroker *foundBroker = nil;
-	for (MCMessageBroker *broker in self.clientBrokers) {
-		if (broker.socket == socket) {
-			foundBroker = broker;
-		}
-	}
-	return foundBroker;
-}
-
 -(void)startService {
     // Start listening socket
     NSError *error = nil;
-    self.listeningSocket = [[[AsyncSocket alloc] initWithDelegate:self] autorelease];
     if ( ![self.listeningSocket acceptOnPort:54321 error:&error] ) {
         NSLog(@"Failed to create listening socket");
         return;
@@ -60,53 +45,43 @@ NSString * const MCChatServiceType = @"_mcchat1._tcp."; // Must be less than 14 
 
 -(void)stopService {
     self.listeningSocket = nil;
-    self.messageBroker.delegate = nil;
-    self.messageBroker = nil;
     [netService stop]; 
     [netService release];    
     [super dealloc];
 }
 
-#pragma mark Socket Callbacks
-//! 
--(BOOL)onSocketWillConnect:(AsyncSocket *)sock {
-	if ([self findBrokerWithSocket:sock] == nil) {
-		return YES;
-	}
-    return NO;
+#pragma mark AsyncSocket
+- (void)onSocket:(AsyncSocket *)sock didAcceptNewSocket:(AsyncSocket *)newSocket
+{
+	DLog(@"didAcceptNewSocket : SERVER got new client");
+	[self.clients addObject:newSocket];
 }
 
--(void)onSocketDidDisconnect:(AsyncSocket *)sock {
-	MCMessageBroker *brokerToBeDisconnected = [self findBrokerWithSocket:sock];
-	if (brokerToBeDisconnected == nil) {
-		return;
+- (void)onSocket:(AsyncSocket *)sock didWriteDataWithTag:(long)tag
+{
+	DLog(@"Server wrote something to socket");
+	for (AsyncSocket *client in self.clients) {
+		[client readDataToData:[AsyncSocket LFData] withTimeout:-1 tag:1];
 	}
-	[self.clientBrokers removeObject:brokerToBeDisconnected];
-	// TODO: send out notification to possible view controllers that might be interested that a socket has been closed
+}
+
+- (void)onSocket:(AsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
+{
+	NSString *dataString = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
 	
-}
-
--(void)onSocket:(AsyncSocket *)sock didConnectToHost:(NSString *)host port:(UInt16)port {
-	DLog(@"Server accepted new connection on host %@ port: %i", host, port);
-	MCMessageBroker *newBroker = [[[MCMessageBroker alloc] initWithAsyncSocket:sock] autorelease];
-    newBroker.delegate = self;
-    [self.clientBrokers addObject:newBroker];
-}
-
-#pragma mark MCMessageBrokerDelegate
-
--(void)messageBroker:(MCMessageBroker *)server didReceiveMessage:(MCMessage *)message {
-	NSString *aMessage = [[[NSString alloc] initWithData:message.dataContent encoding:NSUTF8StringEncoding] autorelease];
-	DLog(@"Will send message: %@ to all clients", aMessage);
-	
-	// Send this message to all connected clients. We're echoing.
-	int counter = 0;
-	for (MCMessageBroker *broker in self.clientBrokers) {
-		DLog(@"Server sending message : %d'th time", counter++);
-		[broker sendMessage:message];
+	DLog(@"SERVER something was sent to server : %@", dataString);
+	for (AsyncSocket *client in self.clients) {
+		if (client != sock) {
+			[client writeData:data withTimeout:-1 tag:1];
+		}
 	}
 }
 
+- (void)onSocket:(AsyncSocket *)sock didConnectToHost:(NSString *)host port:(UInt16)port
+{
+	DLog(@"SERVER connected to host");
+	[sock writeData:[@"Oioi" dataUsingEncoding:NSUTF8StringEncoding] withTimeout:-1 tag:2];
+}
 #pragma mark Net Service Delegate Methods
 
 -(void)netService:(NSNetService *)aNetService didNotPublish:(NSDictionary *)dict {
@@ -115,9 +90,20 @@ NSString * const MCChatServiceType = @"_mcchat1._tcp."; // Must be less than 14 
 
 #pragma mark NSObject
 
+- (id)init
+{
+	self = [super init];
+	if (self != nil) {
+		listeningSocket = [[AsyncSocket alloc] initWithDelegate:self];
+		clients = [[NSMutableArray alloc] initWithCapacity:0];
+	}
+	
+	return self;
+}
+
 -(void)dealloc {
     [self stopService];
-	[clientBrokers release];
+	[clients release];
     [super dealloc];
 }
 @end

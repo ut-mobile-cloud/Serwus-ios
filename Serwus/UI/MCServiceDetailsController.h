@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-
-@interface MCServiceDetailsController : UIViewController {
-    
+@interface MCServiceDetailsController : UIViewController <NSNetServiceDelegate>{
+	NSNetService *netService;
+	UIImageView *logoImageView;
 }
+
+@property (nonatomic, retain) IBOutlet UIImageView *logoImageView;
+@property (nonatomic, retain) NSNetService *netService;
 
 @end

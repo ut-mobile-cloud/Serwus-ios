@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class MCChatClient;
-@interface MCChatClientsManager : NSObject {
+@interface MCChatClientsManager : NSObject <NSNetServiceDelegate>{
 	@private
 	NSMutableArray *chatClients;
 }

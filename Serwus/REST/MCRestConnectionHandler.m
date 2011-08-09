@@ -16,6 +16,7 @@
 #import "MCChatRoom.h"
 #import "MCUsers.h"
 #import "MCUser.h"
+#import "MCPicture.h"
 
 @implementation MCRestConnectionHandler
 
@@ -59,6 +60,9 @@
 			restResource = [[MCRestResourceProvider sharedProvider] getAllUsers];
 		} else if ([topLevelResourceName isEqualToString:@"rooms"]) { // Handle rooms
 			restResource = [[MCRestResourceProvider sharedProvider] getAllRooms];
+		} else if ([topLevelResourceName isEqualToString:@"logo"]) { // To demo sending a picture
+			DLog(@"Sending logo");
+			restResource = [[MCPicture alloc] initWithImageName:@"logo2"];
 		}
 	} else if (pathComponents.count == 3) {
 		// Request is for second level objects
@@ -70,6 +74,7 @@
 			restResource = [[MCRestResourceProvider sharedProvider] getRoomForName:selectedResourceName];
 		}
 	} else {
+		DLog(@"Did not know how to handle");
 		// TODO: handle error - resource not found
 	}
 	responseData = [restResource doGetWithInfo:nil];

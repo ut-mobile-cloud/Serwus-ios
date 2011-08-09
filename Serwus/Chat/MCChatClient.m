@@ -10,14 +10,12 @@
 #import "MCChatServer.h"
 #import "MCMessageBroker.h"
 #import "AsyncSocket.h"
-#import "MCMessage.h"
 
 NSString * const MCChatClientResolvedAddressNotification = @"MCChatClientResolvedAddressNotification";
 
-@interface MCChatClient () // We want these properties to be writable for the class itself
+@interface MCChatClient () 
 
 @property (readwrite, assign) BOOL isConnected;
-@property (readwrite, retain) MCMessageBroker *messageBroker;
 
 @end
 
@@ -25,7 +23,6 @@ NSString * const MCChatClientResolvedAddressNotification = @"MCChatClientResolve
 
 @synthesize isConnected;
 @synthesize remoteService;
-@synthesize messageBroker;
 @synthesize socket;
 
 
@@ -36,18 +33,6 @@ NSString * const MCChatClientResolvedAddressNotification = @"MCChatClientResolve
 	return @"Just a name";
 }
 
-#pragma mark MCMessageBroker
-
-- (void)messageBroker:(MCMessageBroker *)server didSendMessage:(MCMessage *)message
-{
-	DLog(@"Message broker SENT message");
-}
-
-- (void)messageBroker:(MCMessageBroker *)server didReceiveMessage:(MCMessage *)message
-{
-	DLog(@"Message broker RECEIVED message : %@", [NSString stringWithUTF8String:[[message dataContent]bytes]]);
-}
-
 -(void)connect {
     remoteService.delegate = self;
     [remoteService resolveWithTimeout:30];
@@ -55,34 +40,30 @@ NSString * const MCChatClientResolvedAddressNotification = @"MCChatClientResolve
 
 -(IBAction)send:(NSString *)text {
     NSData *data = [text dataUsingEncoding:NSUTF8StringEncoding];
-    MCMessage *newMessage = [[[MCMessage alloc] init] autorelease];
-    newMessage.tag = 100;
-    newMessage.dataContent = data;
-	DLog(@"ChatClient sending message: %@", text);
-    [self.messageBroker sendMessage:newMessage];
+	[self.socket writeData:data withTimeout:-1 tag:1];
+	DLog(@"ChatClient sent message: %@", text);
 }
 
 #pragma mark AsyncSocket Delegate Methods
--(void)onSocketDidDisconnect:(AsyncSocket *)sock {
-    NSLog(@"Socket disconnected");
+
+- (void)onSocket:(AsyncSocket *)sock didConnectToHost:(NSString *)host port:(UInt16)port
+{
+	DLog(@"Socket did CONNECT");
+	[sock readDataToData:[AsyncSocket LFData] withTimeout:-1 tag:1];
 }
 
--(BOOL)onSocketWillConnect:(AsyncSocket *)sock {
-    if ( messageBroker == nil ) {
-        [sock retain];
-        return YES;
-    }
-    return NO;
+- (void)onSocket:(AsyncSocket *)sock didWriteDataWithTag:(long)tag
+{
+	DLog(@"Socket did WRITE");
 }
 
--(void)onSocket:(AsyncSocket *)sock didConnectToHost:(NSString *)host port:(UInt16)port {      
-    MCMessageBroker *newBroker = [[[MCMessageBroker alloc] initWithAsyncSocket:sock] autorelease];
-    [sock release];
-    newBroker.delegate = self;
-    self.messageBroker = newBroker;
-    self.isConnected = YES;
+- (void)onSocket:(AsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
+{
+	NSString *dataString = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+	DLog(@"Socket read some data : %@", dataString);
+	
+	[sock readDataToData:[AsyncSocket LFData] withTimeout:-1 tag:1];
 }
-
 #pragma mark NSNetServiceDelegate
 
 - (void)netServiceDidResolveAddress:(NSNetService *)resolvedService
@@ -94,7 +75,7 @@ NSString * const MCChatClientResolvedAddressNotification = @"MCChatClientResolve
 
 - (void)netService:(NSNetService *)sender didNotResolve:(NSDictionary *)errorDict
 {
-	DDLog(@"ERROR");
+	DDLog(@"ERROR : %@", errorDict);
 }
 
 #pragma mark NSObject
@@ -115,8 +96,6 @@ NSString * const MCChatClientResolvedAddressNotification = @"MCChatClientResolve
 	[self.socket disconnect];
 	[self.socket release];
 	[self.remoteService release];
-	[self.messageBroker release];
-	self.messageBroker.delegate = nil;
 	[super dealloc];
 }
 

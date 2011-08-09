@@ -7,25 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MCMessageBrokerDelegate.h"
+#import "AsyncSocket.h"
 
 extern const int MCChatServicePort;
 extern NSString * const MCChatServiceBaseName;
 extern NSString * const MCChatServiceType;
 
 @class AsyncSocket;
-@class MCMessageBroker;
 
-@interface MCChatServer : NSObject<NSNetServiceDelegate, MCMessageBrokerDelegate> {
+@interface MCChatServer : NSObject<NSNetServiceDelegate, AsyncSocketDelegate> {
     NSNetService *netService;
     AsyncSocket *listeningSocket;
-    MCMessageBroker *messageBroker;
-	NSMutableArray *clientBrokers;
+	NSMutableArray *clients;
 }
 
 @property (readwrite, retain) AsyncSocket *listeningSocket;
-@property (readwrite, retain) MCMessageBroker *messageBroker;
-@property (nonatomic, retain) NSMutableArray *clientBrokers;
+@property (nonatomic, retain) NSMutableArray *clients;
 
 + (MCChatServer *)sharedServer;
 - (void)startService;

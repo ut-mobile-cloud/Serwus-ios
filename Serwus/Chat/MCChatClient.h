@@ -7,17 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MCMessageBrokerDelegate.h"
+#import "AsyncSocket.h"
 extern NSString * const MCChatClientResolvedAddressNotification;
 
-@class MCMessageBroker;
 @class AsyncSocket;
 
-@interface MCChatClient : NSObject<NSNetServiceDelegate, MCMessageBrokerDelegate> {
+@interface MCChatClient : NSObject<NSNetServiceDelegate, AsyncSocketDelegate> {
 	@private
 	BOOL isConnected;
 	NSNetService *remoteService;
-	MCMessageBroker *messageBroker;
 	AsyncSocket *socket;
 	
 }
