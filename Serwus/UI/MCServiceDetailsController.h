@@ -10,10 +10,12 @@
 
 @interface MCServiceDetailsController : UIViewController <NSNetServiceDelegate>{
 	NSNetService *netService;
+	UILabel *locationLabel;
 	UIImageView *logoImageView;
 }
 
 @property (nonatomic, retain) IBOutlet UIImageView *logoImageView;
-@property (nonatomic, retain) NSNetService *netService;
+@property (nonatomic, assign) NSNetService *netService;
+@property (nonatomic, retain) IBOutlet UILabel *locationLabel;
 
 @end

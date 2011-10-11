@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		250532D213F16B53006D2D9A /* logo1.png in Resources */ = {isa = PBXBuildFile; fileRef = 250532D113F16B53006D2D9A /* logo1.png */; };
 		251133BD13CDA6AC008D332D /* MCChatClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2511335E13CDA6AC008D332D /* MCChatClient.m */; };
 		251133BF13CDA6AC008D332D /* MCMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2511336213CDA6AC008D332D /* MCMessage.m */; };
 		251133C013CDA6AC008D332D /* MCMessageBroker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2511336413CDA6AC008D332D /* MCMessageBroker.m */; };
@@ -111,6 +112,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		250532D113F16B53006D2D9A /* logo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo1.png; sourceTree = "<group>"; };
 		2511335D13CDA6AC008D332D /* MCChatClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCChatClient.h; sourceTree = "<group>"; };
 		2511335E13CDA6AC008D332D /* MCChatClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCChatClient.m; sourceTree = "<group>"; };
 		2511336113CDA6AC008D332D /* MCMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCMessage.h; sourceTree = "<group>"; };
@@ -363,6 +365,7 @@
 		252E3FDA13E162360033B77F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				250532D113F16B53006D2D9A /* logo1.png */,
 				252E3FE113E1702E0033B77F /* logo2.png */,
 			);
 			path = Resources;
@@ -692,6 +695,7 @@
 				25C2A3F613D071E2001DEB0C /* man.png in Resources */,
 				25C2A3F713D071E2001DEB0C /* man@2x.png in Resources */,
 				252E3FE213E1702E0033B77F /* logo2.png in Resources */,
+				250532D213F16B53006D2D9A /* logo1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

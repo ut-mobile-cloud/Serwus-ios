@@ -65,11 +65,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Serwus/UI/MCServiceDetailsController.m"
-         timestampString = "334586655.62034"
+         timestampString = "334590138.234809"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "116"
-         endingLineNumber = "116"
+         startingLineNumber = "110"
+         endingLineNumber = "110"
          landmarkName = "-netServiceDidResolveAddress:"
          landmarkType = "5">
       </FileBreakpoint>

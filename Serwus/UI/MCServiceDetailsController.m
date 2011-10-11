@@ -18,6 +18,7 @@
 
 @synthesize logoImageView;
 @synthesize netService;
+@synthesize locationLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,8 +31,9 @@
 
 - (void)dealloc
 {
-	[netService release];
+//	[netService release];
 	[logoImageView release];
+	[locationLabel release];
     [super dealloc];
 }
 
@@ -61,6 +63,7 @@
 - (void)viewDidUnload
 {
 	[self setLogoImageView:nil];
+	[self setLocationLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -79,16 +82,7 @@
 }
 
 - (void)netServiceDidResolveAddress:(NSNetService *)sender
-{
-//	DLog(@"RESOLVED service w/ name : %@", [sender name]);
-//	NSData *addressData = [[sender addresses] lastObject];
-//	struct sockaddr_in *addressStruct = (struct sockaddr_in *)[addressData bytes];
-//	int port = ntohs(addressStruct->sin_port);
-//	NSString *addressIP = [NSString stringWithCString:(char *)inet_ntoa(addressStruct->sin_addr) encoding:NSUTF8StringEncoding];
-//	DLog(@"ServiceDetailsController RESOLVED TO : %@ : %d", addressIP, port);
-//	
-//	NSURL *requestURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@:%d/logo", addressIP, port]];
-	
+{	
 	NSArray *addresses = [sender addresses];
 	if (0 == [addresses count]) {
 		DLog(@"Did not find any addresses from service");
@@ -112,11 +106,17 @@
 		urlString = [NSString stringWithFormat:@"http://[%s]:%d", (0 ? formatted : "::1"), port];
 	}
 	DLog(@"urlString : %@", urlString);
-	NSURL *requestURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", urlString, @"logo", nil]];
-	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:requestURL];
+	NSURL *logoRequestURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", urlString, @"logo", nil]];
+	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:logoRequestURL];
 	[request startSynchronous];
 	NSData *responseData = [request responseData];
 	self.logoImageView.image = [UIImage imageWithData:responseData];
+	
+	ASIHTTPRequest *locationRequest = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", urlString, @"location", nil]]];
+	[locationRequest startSynchronous];
+	NSString *locationJson = [locationRequest responseString];
+	self.locationLabel.text = locationJson;
+	DLog(@"Got location : %@", locationJson);
 }
 
 - (void)netService:(NSNetService *)sender didNotResolve:(NSDictionary *)errorDict
